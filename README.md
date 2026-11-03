@@ -26,3 +26,12 @@ Matnlar `index.html` ichidagi `<script>` qismida: `ZONES` (tana qismlari), `STAT
 
 ## Audio misollar
 `audio/` papkasida 6 ta fayl bo‘lishi kerak: `1-xotirjam.mp3`, `2-asabiy.mp3`, `3-iliq.mp3`, `4-sovuq.mp3`, `5-sokin.mp3`, `6-gazab.mp3` (ElevenLabs, “Shohjahon” ovozi, eleven_v4). Fayl bo‘lmasa, saytda “Audio fayl hali yuklanmagan” yozuvi chiqadi.
+
+## Rasmlar
+`images/` papkasida 14 ta rasm (ElevenLabs, gpt-image-2.5): tana xaritasi paneli, “Vaziyatlar” va “Mashq rejimi”da ishlatiladi. Rasmlar sun’iy intellekt yaratgan — real odamlar emas.
+
+## Yangi bo‘limlar
+- **Mashq rejimi** — `DRILL` (rasm/audio + savol)
+- **Suhbat simulyatori** — `SIMS` (3 ta stsenariy, har qadamda 3 tanlov)
+- **Lug‘at** — `GLOSS`
+- Tana xaritasida **Erkak / Ayol** tanlovi (ayol figurasi JS orqali `#figArt` dan yasaladi)

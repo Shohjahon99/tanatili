@@ -230,6 +230,45 @@
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
   @media (max-width:900px){.pct{grid-template-columns:1fr}.prow{grid-template-columns:1fr 1fr 44px}}
 
+  /* gender toggle */
+  .gtog{display:flex;gap:6px;justify-content:center;margin:4px 0 8px}
+  .gbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;font:500 14px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+  .gbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .zimg,.simg{margin:14px 0 0}
+  .zimg img,.simg img{width:100%;border-radius:10px;display:block}
+  .simg img{max-height:280px;object-fit:cover}
+  .zimg figcaption,.simg figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+  /* drill */
+  .drill{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .dgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start}
+  .dmedia img{width:100%;border-radius:12px;display:block;aspect-ratio:16/9;object-fit:cover;background:#eee6da}
+  .daud{background:var(--bg);border-radius:12px;padding:30px 20px;text-align:center}
+  .daud span{display:block;font-family:Fraunces,serif;font-size:22px;margin-bottom:14px}
+  .daud audio{width:100%}
+  .dprog{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .dend{text-align:center;padding:20px}
+  /* sim */
+  .sim{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;max-width:860px}
+  .sintro{background:var(--bg);border-radius:10px;padding:12px 14px;margin:0 0 14px}
+  .sreact{color:var(--accent-ink);font-style:italic;margin:0 0 12px}
+  .snpc{border-left:4px solid var(--accent);padding:4px 0 4px 14px;margin-bottom:16px}
+  .scue{color:var(--muted);font-size:14px;margin-bottom:4px}
+  .ssay{font-size:18px}
+  .opt.midpick{background:var(--accent-soft);border-color:var(--accent)}
+  .scorebar{height:10px;background:#eee6da;border-radius:5px;overflow:hidden;margin:10px 0}
+  .scorebar i{display:block;height:100%;background:var(--ok)}
+  .slog{padding-left:20px} .slog li{margin:10px 0}
+  .slog small{color:var(--muted)}
+  .slog span{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-right:6px}
+  .q0{background:#f8e3df;color:#7c3227} .q1{background:var(--accent-soft);color:var(--accent-ink)} .q2{background:#e3f1e5;color:#2c5a37}
+  /* glossary */
+  .gsearch{width:100%;max-width:420px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:15px Inter,sans-serif;margin-bottom:18px;background:#fff}
+  .gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin:0}
+  .gi{background:var(--card);border-radius:12px;padding:14px 16px}
+  .gi dt{font-weight:600;margin-bottom:4px}
+  .gi dd{margin:0;color:#3d3832;font-size:15px}
+  @media (max-width:900px){.dgrid{grid-template-columns:1fr}}
+
   @media (max-width:900px){
     .explorer{grid-template-columns:1fr}
     .panel{position:static;max-height:none}
@@ -246,10 +285,13 @@
     <a href="#tahlil">Kombinatsiya</a>
     <a href="#ovoz">Ovoz</a>
     <a href="#vaziyatlar">Vaziyatlar</a>
+    <a href="#mashq">Mashq</a>
+    <a href="#simulyator">Simulyator</a>
     <a href="#qoidalar">Qoidalar</a>
     <a href="#kitoblar">Kitoblar</a>
     <a href="#afsonalar">Afsonalar</a>
     <a href="#test">Test</a>
+    <a href="#lugat">Lug‘at</a>
     <a href="#manbalar">Manbalar</a>
   </div>
 </nav>
@@ -297,6 +339,7 @@
 
     <div class="explorer">
       <div class="figure-box">
+        <div class="gtog" role="group" aria-label="Figura"><button class="gbtn on" data-g="m">Erkak</button><button class="gbtn" data-g="f">Ayol</button></div>
         <svg id="body" viewBox="0 0 760 890" role="img" aria-label="Inson tanasi xaritasi">
           <defs>
             <linearGradient id="skin" x1="0" x2="1">
@@ -327,6 +370,7 @@
           </defs>
 
           <g transform="translate(180,0)">
+            <defs>
             <g id="figArt">
             <!-- shadow -->
             <ellipse cx="200" cy="866" rx="92" ry="9" fill="#000" opacity=".07"/>
@@ -379,6 +423,8 @@
             <path d="M190,138 Q200,142 210,138" stroke="#c49272" stroke-width="1" fill="none" opacity=".6"/>
 
             </g>
+            </defs>
+            <use class="figuse" href="#figArt"/>
             <!-- ===== CLICK ZONES ===== -->
             <g id="zones">
               <ellipse class="zone" data-z="bosh" cx="200" cy="44" rx="58" ry="34"/>
@@ -428,8 +474,9 @@
 
     <div class="explorer">
       <div class="figure-box">
+        <div class="gtog" role="group" aria-label="Figura"><button class="gbtn on" data-g="m">Erkak</button><button class="gbtn" data-g="f">Ayol</button></div>
         <svg id="body2" viewBox="0 0 760 890" role="img" aria-label="Kombinatsiya uchun inson tanasi">
-          <g transform="translate(180,0)"><use href="#figArt"/><g id="zones2"></g></g>
+          <g transform="translate(180,0)"><use class="figuse" href="#figArt"/><g id="zones2"></g></g>
           <g id="labels2"></g>
         </svg>
         <p class="hint">Yashil yorliq — holat tanlangan</p>
@@ -483,8 +530,27 @@
   </div>
 </section>
 
+<!-- ============ MASHQ ============ -->
+<section id="mashq">
+  <div class="wrap">
+    <h2>Mashq rejimi: ko‘zingizni charxlang</h2>
+    <p class="lead">Rasmga qarang yoki ovozni tinglang va eng to‘g‘ri talqinni tanlang. Diqqat: ba’zi savollarda to‘g‘ri javob — “bitta belgidan xulosa qilib bo‘lmaydi”.</p>
+    <div class="drill" id="drill"></div>
+  </div>
+</section>
+
+<!-- ============ SIMULYATOR ============ -->
+<section id="simulyator" style="background:#f5f0e8">
+  <div class="wrap">
+    <h2>Suhbat simulyatori</h2>
+    <p class="lead">Haqiqiy vaziyatni o‘ynab ko‘ring. Har qadamda suhbatdoshning gapi va tana tili ko‘rsatiladi — siz javobni tanlaysiz. Oxirida baho va tahlil chiqadi.</p>
+    <div class="tabs" id="simTabs"></div>
+    <div class="sim" id="simBox"></div>
+  </div>
+</section>
+
 <!-- ============ QOIDALAR ============ -->
-<section id="qoidalar" style="background:#f5f0e8">
+<section id="qoidalar">
   <div class="wrap">
     <h2>Oltita oltin qoida</h2>
     <p class="lead">Barcha jiddiy mualliflar — FBI mutaxassisi Navarro ham, psixolog Ekman ham, tadqiqotchi Vrij ham — bitta narsada yakdil: alohida imo-ishora hech narsani isbotlamaydi. Quyidagi qoidalarsiz har qanday “signal” tasodifiy taxmin bo‘lib qoladi.</p>
@@ -525,7 +591,7 @@
 </section>
 
 <!-- ============ KITOBLAR ============ -->
-<section id="kitoblar">
+<section id="kitoblar" style="background:#f5f0e8">
   <div class="wrap">
     <h2>Eng mashhur kitoblar: tahlil va baho</h2>
     <p class="lead">Har bir kitob uch o‘lchovda baholandi: ilmiy asos (tadqiqotlar bilan tasdiqlanganmi), amaliy foyda va nimaga ehtiyot bo‘lish kerak. Yorliqlar: <span class="tag t-sci">Ilmiy</span> <span class="tag t-prac">Amaliy</span> <span class="tag t-pop">Ommabop</span></p>
@@ -534,7 +600,7 @@
 </section>
 
 <!-- ============ AFSONALAR ============ -->
-<section id="afsonalar" style="background:#f5f0e8">
+<section id="afsonalar">
   <div class="wrap">
     <h2>Afsona va haqiqat</h2>
     <p class="lead">Internetda eng ko‘p tarqalgan “qoidalar” va ularni ilmiy tekshiruv natijalari.</p>
@@ -543,11 +609,21 @@
 </section>
 
 <!-- ============ TEST ============ -->
-<section id="test">
+<section id="test" style="background:#f5f0e8">
   <div class="wrap">
     <h2>O‘zingizni sinang</h2>
     <p class="lead">6 ta savol. Har bir javobdan keyin izoh chiqadi.</p>
     <div class="quiz" id="quiz"></div>
+  </div>
+</section>
+
+<!-- ============ LUG'AT ============ -->
+<section id="lugat">
+  <div class="wrap">
+    <h2>Atamalar lug‘ati</h2>
+    <p class="lead">Qo‘llanmada uchraydigan ilmiy va kasbiy atamalar — oddiy tilda.</p>
+    <input id="gq" class="gsearch" type="search" placeholder="Atamani qidiring…" aria-label="Atamani qidirish">
+    <dl class="gloss" id="gloss"></dl>
   </div>
 </section>
 
@@ -606,6 +682,7 @@
 
 <script>
 /* ================= DATA ================= */
+const ZIMG={kozlar:["images/koz-tosish.jpg","Ko‘z to‘sish: yoqimsiz xabardan keyin"],lablar:["images/lab-qisish.jpg","Lab qisish: norozilik yoki zo‘riqish"],bosh:["images/bosh-egish.jpg","Boshni egib tinglash: qiziqish"],boyin:["images/boyin-ushlash.jpg","Bo‘yin pastini yopish: kuchli xavotir"],tana:["images/tosiq.jpg","To‘siq: papkani ko‘ksiga bosish"],qollar:["images/qol-qovushtirish.jpg","Qo‘l qovushtirish: kontekstga qarang"],kaftlar:["images/gumbaz.jpg","Gumbaz: o‘ziga ishonch"],oyoqlar:["images/oyoq-chalishtirish.jpg","Turib oyoq chalishtirish: qulaylik"],panjalar:["images/oyoq-eshik.jpg","Oyoq eshikka burilgan: ketish istagi"]};
 const ZONES = {
   qosh:{
     title:"Qosh va peshona", level:2,
@@ -870,6 +947,7 @@ function render(k){
         <div><span class="wrong">✗ Shoshilinch xulosa:</span> ${e.w}</div>
         <div><span class="right">✓ To‘g‘ri yondashuv:</span> ${e.r}</div></div>`).join("")}
     </div>
+    ${ZIMG[k]?`<figure class="zimg"><img src="${ZIMG[k][0]}" alt="${ZIMG[k][1]}" loading="lazy" onerror="this.parentNode.remove()"><figcaption>${ZIMG[k][1]}</figcaption></figure>`:""}
     <div class="src">Manba: ${z.src}</div>`;
   const b=document.getElementById("exBtn"),box=document.getElementById("exBox");
   b.onclick=()=>{const o=box.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Misollarni yashirish ↑":"Misollar bilan tushuntir ↓";};
@@ -1193,7 +1271,7 @@ const LOCAL=[
   ["Obro‘ (yuz)","Odamni boshqalar oldida xijolat qilish munosabatni buzadi. Tanqid yolg‘iz, yumshoq va “biz” shaklida aytiladi."]
 ];
 const SITS=[
- {k:"katta",t:"Kattalar va ota-ona bilan",
+ {k:"katta",t:"Kattalar va ota-ona bilan",img:"images/hurmat-katta.jpg",cap:"Kattani tinglashda ko‘zni pastga olish — hurmat belgisi",
   body:["O‘tirishga ruxsat kutib o‘tiring, kattadan oldin o‘tirmang","Qo‘llarni tinch tuting; oyoq ustiga oyoq qo‘yish, cho‘zilib o‘tirish beodoblik sanaladi","Ko‘zga yumshoq qarang, lekin uzoq tik tikilmang","Kattani kuzatib qo‘ying, eshikni oching, piyolani ikki qo‘llab yoki o‘ng qo‘l bilan uzating"],
   voice:["Past, sokin, shoshilmasdan","Kattaning gapini bo‘lmang — jim turish ham hurmat"],
   say:["“Assalomu alaykum, yaxshi yuribsizmi, salomatliklaringiz yaxshimi?”","“Sizning maslahatingiz kerak edi…” — fikr so‘rash orqali kirish","“Siz aytgandek bo‘lsin, faqat bitta narsani o‘ylab qoldim…” — e’tirozni hurmat bilan aytish","“Uzr, tushunmay qoldim, yana bir bor aytib bera olasizmi?”"],
@@ -1228,7 +1306,7 @@ const SITS=[
   avoid:["“Bu bizning aybimiz emas”","Mijoz gapini bo‘lish","Kulimsirab turish — mazax qilishdek tuyuladi"],
   read:["Mijozning yelkalari tushib, nafas bir tekis bo‘lsa — tinchlandi, yechim taklif qiling","Qo‘llar belda, oldinga engashish — hali ham g‘azabda, tinglashda davom eting"],
   src:"Patterson va boshq., Crucial Conversations (2002); Voss (2016)"},
- {k:"sovchi",t:"Sovchilik, qudalar, to‘y-marosim",
+ {k:"sovchi",t:"Sovchilik, qudalar, to‘y-marosim",img:"images/salom-koks.jpg",cap:"Qo‘lni ko‘ksiga qo‘yib salomlashish",
   body:["Kiyim tartibli va kamtarona bo‘lsin","Kattalarni oldinga o‘tkazing, ular gapirganda jim turing","Ayollar va erkaklar alohida o‘tirsa, shu tartibni hurmat qiling","Qo‘lni ko‘ksiga qo‘yib salomlashish — eng xavfsiz yo‘l"],
   voice:["Muloyim, kamtar ohang; hazilni kattalar boshlasa qo‘shiling","Maqtovni ko‘paytirib yubormang — samimiy va qisqa"],
   say:["“Xudo xohlasa, yaxshi niyat bilan keldik.”","“Ota-onangizni ko‘rganimizdan xursandmiz.”","Rad javobni yumshoq berish: “Hali ertaroq, bir oz o‘ylab ko‘raylik”"],
@@ -1279,11 +1357,228 @@ function showSit(i){
     <div class="sc no"><small>Nimadan qochish kerak</small>${L(S.avoid)}</div>
     <div class="sc wide"><small>Suhbatdoshni qanday “o‘qish”</small>${L(S.read)}</div>
    </div>
+   ${S.img?`<figure class="simg"><img src="${S.img}" alt="${S.cap}" loading="lazy" onerror="this.parentNode.remove()"><figcaption>${S.cap}</figcaption></figure>`:""}
    <div class="src">Manba: ${S.src}</div>`;
 }
 tabs.onclick=e=>{const b=e.target.closest(".tab"); if(b) showSit(+b.dataset.i);};
 showSit(0);
 
+/* ================= AYOL FIGURASI ================= */
+(function(){
+  const src=document.getElementById("figArt"), NSX="http://www.w3.org/2000/svg";
+  const f=src.cloneNode(true); f.id="figArtF";
+  const defs=src.parentNode; // <defs>
+  // kiyim ranglari
+  const grad=(id,c1,c2)=>{const g=document.createElementNS(NSX,"linearGradient");g.id=id;g.setAttribute("x1","0");g.setAttribute("x2","1");
+    [[0,c1],[.5,c2],[1,c1]].forEach(([o,c])=>{const st=document.createElementNS(NSX,"stop");st.setAttribute("offset",o);st.setAttribute("stop-color",c);g.append(st);});return g;};
+  const svgDefs=document.querySelector("#body defs");
+  svgDefs.append(grad("shirtF","#a3707c","#bf8b97"),grad("pantsF","#3d3a52","#545070"));
+  // qo'l (yeng) — ayol varianti
+  const armF=document.getElementById("arm").cloneNode(true); armF.id="armF";
+  armF.querySelectorAll('[fill="url(#shirt)"]').forEach(e=>e.setAttribute("fill","url(#shirtF)"));
+  armF.querySelectorAll('path[stroke="#5a6b7e"]').forEach(e=>e.setAttribute("stroke","#8d5f6a"));
+  svgDefs.append(armF);
+  f.querySelectorAll("use").forEach(u=>{if(u.getAttribute("href")==="#arm")u.setAttribute("href","#armF");});
+  f.querySelectorAll('[fill="url(#shirt)"]').forEach(e=>e.setAttribute("fill","url(#shirtF)"));
+  f.querySelectorAll('[fill="url(#pants)"]').forEach(e=>e.setAttribute("fill","url(#pantsF)"));
+  f.querySelectorAll('[stroke="#5a6b7e"],[stroke="#5f7084"]').forEach(e=>e.setAttribute("stroke","#8d5f6a"));
+  f.querySelectorAll('circle[fill="#e9edf2"]').forEach(e=>e.remove());
+  // soch: oldingi sochni almashtirish, orqa uzun soch qo'shish
+  const hair=[...f.querySelectorAll("path")].find(p=>p.getAttribute("fill")==="#2f2219");
+  hair.setAttribute("d","M145,90 C138,40 166,12 201,12 C238,12 264,40 255,90 C251,66 238,48 218,42 C200,54 174,60 152,72 C148,78 146,84 145,90 Z");
+  const back=document.createElementNS(NSX,"path");
+  back.setAttribute("d","M146,70 C134,112 132,160 138,196 C150,204 168,200 178,190 L222,190 C232,200 250,204 262,196 C268,160 266,112 254,70 Z");
+  back.setAttribute("fill","#2f2219");
+  back.setAttribute("d","M146,72 C134,112 132,150 136,178 C150,182 166,178 176,170 L224,170 C234,178 250,182 264,178 C268,150 266,112 254,72 Z");
+  const neck=[...f.querySelectorAll("path")].find(p=>(p.getAttribute("d")||"").startsWith("M182,112"));
+  neck.parentNode.insertBefore(back,neck);
+  // qoshlar ingichkaroq, lab rangi
+  f.querySelectorAll('path[stroke="#3a2a1f"][stroke-width="3.6"]').forEach(e=>e.setAttribute("stroke-width","2.4"));
+  f.querySelectorAll('path[fill="#b5675a"]').forEach(e=>e.setAttribute("fill","#b9545a"));
+  f.querySelectorAll('path[fill="#c4766a"]').forEach(e=>e.setAttribute("fill","#c9636a"));
+  // sirg'alar
+  [[147,106],[253,106]].forEach(([x,y])=>{const c=document.createElementNS(NSX,"circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r","3.2");c.setAttribute("fill","#d9b45a");f.append(c);});
+  defs.append(f);
+})();
+document.querySelectorAll(".gbtn").forEach(b=>b.onclick=()=>{
+  const g=b.dataset.g;
+  document.querySelectorAll(".gbtn").forEach(x=>x.classList.toggle("on",x.dataset.g===g));
+  document.querySelectorAll("use.figuse").forEach(u=>u.setAttribute("href",g==="f"?"#figArtF":"#figArt"));
+});
+
+/* ================= MASHQ REJIMI ================= */
+const DRILL=[
+ {img:"images/lab-qisish.jpg",q:"Hujjatni o‘qiyotgan ayolning yuzida nima ko‘rinyapti?",o:["Xotirjam qiziqish","Norozilik yoki ichki zo‘riqish — biror band unga yoqmagan","Charchoq va uyquchanlik","Yashirin quvonch"],c:1,e:"Lablar ingichka chiziqqa qisilgan — Navarro bo‘yicha eng ishonchli noqulaylik belgilaridan. Lekin sababini bilmaymiz: savol bering — “Qaysi qismi o‘ylantiryapti?”"},
+ {img:"images/tabassum-haqiqiy.jpg",q:"Bu tabassum qanday?",o:["Xushmuomala, odob uchun","Haqiqiy quvonch — ko‘z atrofi ham kulyapti","Kinoyali, mensimaydigan","Asabiy tabassum"],c:1,e:"Yonoqlar ko‘tarilgan, ko‘z chetida “qarg‘a panjasi” bor — Duchenne belgisi. Ko‘pincha samimiy quvonchni bildiradi, garchi ba’zi odamlar uni ham soxtalashtira olsa-da."},
+ {img:"images/tabassum-ijtimoiy.jpg",q:"Bu tabassum haqida eng to‘g‘ri xulosa?",o:["Bu odam yolg‘on gapiryapti","Faqat og‘iz kulyapti — odob yuzasidan yoki his-tuyg‘uni niqoblash","U juda baxtli","Unga hazil yoqdi"],c:1,e:"Ko‘z atrofi harakatlanmagan — ijtimoiy tabassum. Bu yolg‘on emas: suratga tushganda, notanish bilan salomlashganda hammamiz shunday kulamiz."},
+ {img:"images/qol-qovushtirish.jpg",q:"Qo‘llarini qovushtirgan odam haqida nima deyish mumkin?",o:["U suhbatga qarshi va yopiq","U yolg‘on gapiryapti","Bitta belgidan xulosa qilib bo‘lmaydi — kontekst va boshqa signallar kerak","U o‘ziga juda ishongan"],c:2,e:"Qo‘l qovushtirish himoya ham, sovuq ham, shunchaki qulay holat ham bo‘lishi mumkin. Bu yerda yelkalar biroz ko‘tarilgan va tana burilgan — ehtiyotkorlik ehtimoli bor, lekin avval odatiy holatini biling."},
+ {img:"images/boyin-ushlash.jpg",q:"Ayol bo‘yin pastini barmoqlari bilan yopib turibdi. Bu nimani bildiradi?",o:["Bo‘yni og‘riyapti — ahamiyati yo‘q","Kuchli xavotir yoki xavf hissi — o‘zini tinchlantiryapti","Noz-karashma","Yolg‘on aniq belgisi"],c:1,e:"Bo‘yin chuqurchasini yopish — Navarro eng ishonchli stress belgilaridan deb hisoblaydi. Stressning sababi esa har xil: yomon xabar, qo‘rquv, hatto ishonishmasligidan xavotir."},
+ {img:"images/oyoq-eshik.jpg",q:"Chapdagi erkak suhbatdoshiga jilmayib turibdi. Uning oyoqlariga qarang — nima deyish mumkin?",o:["Suhbat unga juda yoqyapti","Ketmoqchi — fikri allaqachon boshqa joyda","U suhbatdoshidan qo‘rqyapti","Hech narsa deyish mumkin emas"],c:1,e:"Yuz odob uchun jilmayadi, oyoq esa eshik tomonga burilgan. Navarro: oyoqlar kamroq nazorat qilinadi. Gapni qisqartiring: “Keyin davom ettiramiz.”"},
+ {img:"images/oyoq-chalishtirish.jpg",q:"Choy ushlab, oyoqlarini chalishtirib turgan yigit qanday holatda?",o:["Xotirjam va qulay","Asabiy","Ketishga shoshilyapti","Himoyalanyapti"],c:0,e:"Turgan holda oyoq chalishtirish — muvozanatni ixtiyoriy kamaytirish. Odam buni faqat xavfsiz va qulay his qilganda qiladi."},
+ {img:"images/gumbaz.jpg",q:"Barmoq uchlarini birlashtirib o‘tirgan ayol haqida eng ehtimolli talqin?",o:["Ishonchsiz va xavotirda","O‘z fikriga va bilimiga ishonadi","Ibodat qilyapti","Zerikkan"],c:1,e:"“Gumbaz” — o‘ziga ishonch belgisi. Lekin uni ko‘p ishlatish sovuq yoki takabbur ko‘rinishi mumkin."},
+ {img:"images/tizza-ketish.jpg",q:"Mehmon “shoshilmayapman” dedi, lekin u shunday o‘tiribdi. Nima qilasiz?",o:["Yana choy quyib, suhbatni davom ettirasiz","“Sizni ushlab qolmayapmanmi?” deb so‘raysiz","Uni xafa bo‘ldi deb o‘ylaysiz","E’tibor bermaysiz"],c:1,e:"Qo‘llar tizzada, og‘irlik oyoqlarga o‘tgan — “ketishga tayyorman” holati. Bizda mehmon odob yuzasidan ochiq aytmaydi, shuning uchun muloyim savol yaxshi."},
+ {img:"images/koz-tosish.jpg",q:"Telefonga qaragach, ko‘zlarini qo‘li bilan to‘sdi. Bu nima?",o:["Ko‘zi charchagan","“Ko‘z to‘sish” — yoqimsiz xabar oldi","U yashirinyapti","Yolg‘on gapiryapti"],c:1,e:"Ko‘zni yumish yoki to‘sish — miya yoqimsiz narsani “ko‘rmaslik”ka urinishi. Bu holatda gapni bosimsiz, sekin boshlang."},
+ {img:"images/bosh-egish.jpg",q:"Boshini yon tomonga egib tinglayotgan ayol qanday holatda?",o:["Zerikkan","Shubhalanyapti","Qiziqish bilan, ochiq tinglayapti","G‘azablangan"],c:2,e:"Boshni egish bo‘yinni ochadi — bu ishonch va qiziqish belgisi. Suhbat yaxshi ketyapti."},
+ {img:"images/tosiq.jpg",q:"Ayol papkani ko‘ksiga bosib, orqaga suyanib o‘tiribdi. Eng yaxshi harakat?",o:["Gapingizni tezlashtirib, bosimni oshirish","Bosimni kamaytirish va uning fikrini so‘rash","Papkani qo‘yishini so‘rash","Uchrashuvni tugatish"],c:1,e:"To‘siq + orqaga chekinish = ehtiyotkorlik. To‘siqni olib tashlashga majburlamang — xavfsizlik hissini bering, savol bering."},
+ {img:"images/hurmat-katta.jpg",q:"Yigit oqsoqolni tinglarkan, ko‘zini pastga olgan. Bu nima?",o:["Yolg‘on gapiryapti","Zerikkan","Bizning madaniyatda — hurmat belgisi","Xafa bo‘lgan"],c:2,e:"O‘zbek odobida kattaga uzoq tik qaramaslik — hurmat. G‘arb kitoblaridagi “ko‘z qochirish = yolg‘on” qoidasi bu yerda ishlamaydi (va umuman ilmiy tasdiqlanmagan)."},
+ {img:"images/salom-koks.jpg",q:"Qo‘lni ko‘ksiga qo‘yib, bosh egib salomlashish nimani bildiradi?",o:["Yurak og‘rig‘i","Hurmat va samimiyat — an’anaviy o‘zbek salomi","Uzr so‘rash","Qasam ichish"],c:1,e:"O‘ng qo‘lni ko‘ksiga qo‘yib, sal egilish — O‘rta Osiyoda keng tarqalgan hurmat belgisi, ayniqsa kattalar va ayollar bilan salomlashganda."},
+ {aud:"audio/2-asabiy.mp3",q:"Ovozni tinglang. Eng to‘g‘ri xulosa qaysi?",o:["Aniq yolg‘on gapiryapti","Hayajon va stress bor; mazmunda tafsilot kam — aniqlashtiruvchi savol berish kerak","Juda xotirjam","G‘azablangan"],c:1,e:"Pauza, takrorlash, ingichka ovoz — stress. Bu yolg‘on isboti emas. “Kim bilan edingiz? Nima qildingiz?” deb tafsilot so‘rang."},
+ {aud:"audio/4-sovuq.mp3",q:"“Yaxshi, roziman” — haqiqatan rozimi?",o:["Ha, so‘zi aniq","Ehtimol rozi emas — ohang so‘zga zid","U xursand","Bu hazil"],c:1,e:"So‘z va ohang mos emas — Mehrabian holati. Bizning yuqori kontekstli muhitda bu ko‘pincha yumshoq “yo‘q”. So‘rang: “Sizni nimadir o‘ylantiryaptimi?”"}
+];
+let di=0,ds=0,dorder=[];
+const dbox=document.getElementById("drill");
+function dshuffle(){dorder=DRILL.map((_,i)=>i).sort(()=>Math.random()-.5);di=0;ds=0;}
+function drawD(){
+  if(di>=dorder.length){
+    const pct=Math.round(ds/dorder.length*100);
+    dbox.innerHTML=`<div class="dend"><h3>Natija: ${ds} / ${dorder.length} (${pct}%)</h3>
+      <p>${pct>=80?"Zo‘r! Siz signallarni kontekst bilan birga o‘qiysiz.":pct>=50?"Yaxshi. “Afsona va haqiqat” hamda “Vaziyatlar” bo‘limlari natijani oshiradi.":"Boshlanishi yaxshi. Tana xaritasini ko‘rib chiqib, qayta urinib ko‘ring."}</p>
+      <button class="btn" id="drAgain">Qaytadan (boshqa tartibda)</button></div>`;
+    document.getElementById("drAgain").onclick=()=>{dshuffle();drawD();};return;
+  }
+  const D=DRILL[dorder[di]];
+  const media=D.img?`<img src="${D.img}" alt="Mashq rasmi" loading="lazy">`:`<div class="daud"><span>Ovozni tinglang</span><audio controls src="${D.aud}"></audio></div>`;
+  dbox.innerHTML=`<div class="dgrid"><div class="dmedia">${media}</div>
+    <div><div class="dprog">${di+1} / ${dorder.length} · Ball: ${ds}</div>
+    <p class="q">${D.q}</p>
+    ${D.o.map((o,i)=>i).sort(()=>Math.random()-.5).map(i=>`<button class="opt" data-i="${i}">${D.o[i]}</button>`).join("")}
+    <p class="explain" id="dex"></p>
+    <button class="btn" id="dnext" style="display:none">Keyingisi →</button></div></div>`;
+  dbox.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    dbox.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===D.c)x.classList.add("correct");});
+    if(i===D.c)ds++;else b.classList.add("incorrect");
+    const ex=document.getElementById("dex");ex.style.display="block";
+    ex.innerHTML=(i===D.c?"<b>To‘g‘ri!</b> ":"<b>Unchalik emas.</b> ")+D.e;
+    const n=document.getElementById("dnext");n.style.display="inline-flex";n.onclick=()=>{di++;drawD();};
+  });
+}
+dshuffle();drawD();
+
+/* ================= SUHBAT SIMULYATORI ================= */
+const SIMS=[
+ {t:"Rahbardan maosh oshirishni so‘rash",who:"Rahbar",
+  intro:"Siz bir yildan beri yaxshi ishlayapsiz va maosh masalasini ko‘tarmoqchisiz. Rahbar xonasiga kirdingiz.",
+  steps:[
+   {cue:"Rahbar kompyuterga qarab o‘tiribdi, ko‘zini ekrandan uzmaydi.",say:"Ha, nima gap?",
+    o:[{t:"“Maoshimni oshirish kerak. Boshqa joydan taklif bor.”",q:0,fb:"Ultimatum bilan boshlash ierarxik muhitda rahbarni himoyaga o‘tkazadi. Avval munosabat, keyin ish.",r:"Rahbar qoshlarini chimirib, kursida orqaga suyandi."},
+       {t:"“Assalomu alaykum. Ikki daqiqa vaqtingiz bormi? Bir masalada maslahatlashmoqchi edim.”",q:2,fb:"Zo‘r: hurmat, ruxsat so‘rash va “maslahat” so‘zi — rahbarga nazorat hissini beradi.",r:"Rahbar ekranni yopib, sizga o‘girildi."},
+       {t:"Indamay, u ekrandan bosh ko‘tarishini kutib turish.",q:1,fb:"Odobli, lekin noaniq. Qisqa so‘rov bilan vaqtini olishga ruxsat so‘ragan ma’qul.",r:"Rahbar bir daqiqadan keyin bosh ko‘tardi: “Gapiravering.”"}]},
+   {cue:"Rahbar sizni tinglashga tayyor.",say:"Eshitaman.",
+    o:[{t:"“Shu yil ikki loyihani muddatidan oldin topshirdim, uchta yangi mijoz olib keldim. Shuni hisobga olib, maoshim masalasini ko‘rib chiqsak.”",q:2,fb:"Aniq natija va faktlar — eng kuchli dalil. Iltimos yumshoq, ammo aniq.",r:"Rahbar sekin bosh irg‘adi, lekin keyin lablarini qisdi."},
+       {t:"“Hamma oshirib olyapti, men ham olishim kerak.”",q:0,fb:"Boshqalar bilan solishtirish adolatsizlik hissini emas, nizoni keltiradi. O‘z hissangiz haqida gapiring.",r:"Rahbar qo‘llarini qovushtirib oldi."},
+       {t:"“Juda ko‘p ishlayapman, charchab qoldim.”",q:1,fb:"Samimiy, lekin “charchoq” — maosh uchun dalil emas. Natijani gapiring.",r:"Rahbar hamdardlik bilan qaradi, lekin lablarini qisdi."}]},
+   {cue:"Rahbar biroz o‘ylanib, orqaga suyandi.",say:"Hozir byudjet juda qiyin…",
+    o:[{t:"“Tushunaman, hozir byudjet bo‘yicha bosim kattadek tuyulyapti. Buni qanday qilib hal qilsak bo‘ladi — qachon qaytib gaplashsak?”",q:2,fb:"Voss usuli: his-tuyg‘uni nomlash + “qanday/qachon” bilan ochiq savol. Rahbar o‘zi yechim izlay boshlaydi.",r:"Rahbar yelkasini bo‘shashtirib: “Keyingi oyning boshida qaytaylik, men yuqoriga gapirib ko‘raman.”"},
+       {t:"“Unda men boshqa ishga ketaman.”",q:0,fb:"Hissiyotli ultimatum. Haqiqatan ketishga tayyor bo‘lmasangiz, ishonchingizni yo‘qotasiz.",r:"Rahbar sovuq ohangda: “O‘zingiz bilasiz.”"},
+       {t:"“Tushunarli, mayli…”",q:1,fb:"Munosabat saqlandi, lekin masala ochiq qoldi. Hech bo‘lmasa keyingi uchrashuv sanasini so‘rang.",r:"Rahbar yengil nafas olib, ekranga qaytdi."}]}
+  ]},
+ {t:"Norozi mijoz",who:"Mijoz",
+  intro:"Siz do‘kon menejerisiz. Mijoz kecha olgan muzlatgichi ishlamay qolganini aytib, kirib keldi.",
+  steps:[
+   {cue:"Mijoz baland ovozda gapiryapti, qo‘llari belida, sizga yaqinlashib keldi.",say:"Bu nima degani?! Kecha oldim, bugun ishlamayapti!",
+    o:[{t:"“Tinchlaning, iltimos!”",q:0,fb:"“Tinchlaning” deyish odatda aksincha ta’sir qiladi — odam o‘zini eshitilmagan his qiladi.",r:"Mijoz yanada ovozini ko‘tardi."},
+       {t:"(Past, sekin ovozda) “Haqsiz, bu juda yoqimsiz holat. Nima bo‘lganini boshidan aytib bering.”",q:2,fb:"Uning ovozidan pastroq gapirish va his-tuyg‘uni tan olish — eng tez tinchlantiruvchi usul.",r:"Mijoz chuqur nafas oldi, qo‘llarini belidan tushirdi."},
+       {t:"“Bu bizning aybimiz emas, zavod nuqsoni.”",q:0,fb:"Ayb masalasini birinchi qo‘yish — mijozni yolg‘iz qoldiradi. Avval tinglang.",r:"Mijoz: “Menga farqi yo‘q, kim aybdor!”"}]},
+   {cue:"Mijoz hali ham asabiy.",say:"Mehmonlar keladi, ovqatlar buzilib ketyapti…",
+    o:[{t:"“Mehmon kelayotganda bunday bo‘lishi — juda asabiylashtiradi.”",q:2,fb:"His-tuyg‘uni nomlash (labeling). Mijoz tushunilganini his qiladi.",r:"Mijozning yelkalari bo‘shashdi: “Ha, aynan…”"},
+       {t:"“Kafolat talonini olib keldingizmi?”",q:1,fb:"Kerakli savol, lekin hali erta. Avval his-tuyg‘u, keyin protsedura.",r:"Mijoz yana asabiylashdi: “Talon emas, muzlatgich kerak!”"},
+       {t:"Telefonga qarab, javob bermay turish.",q:0,fb:"E’tiborsizlik — eng katta xato. Mijoz o‘zini kamsitilgan his qiladi.",r:"Mijoz: “Men siz bilan gaplashyapman!”"}]},
+   {cue:"Mijoz sizga qarab turibdi, kutmoqda.",say:"Xo‘sh, endi nima qilasizlar?",
+    o:[{t:"“Bugun soat 18:00 gacha usta yuboramiz. Tuzatib bo‘lmasa — almashtiramiz. Bu sizga mos keladimi?”",q:2,fb:"Aniq yechim, aniq vaqt va tanlov huquqi. Mijoz nazoratni qaytarib oladi.",r:"Mijoz bosh irg‘adi: “Mayli, kutaman. Rahmat.”"},
+       {t:"“Ko‘ramiz, hal qilamiz.”",q:0,fb:"Noaniq va’da ishonchni yo‘qotadi. Aniq vaqt ayting.",r:"Mijoz shubha bilan: “Qachon?”"},
+       {t:"“Arizani yozib qoldiring, ko‘rib chiqamiz.”",q:1,fb:"To‘g‘ri tartib, lekin sovuq. Muddat va mas’ul shaxsni ham ayting.",r:"Mijoz norozi qiyofada ariza yozdi."}]}
+  ]},
+ {t:"Ota bilan kelishmovchilik",who:"Ota",
+  intro:"Siz IT sohasini tanlamoqchisiz, otangiz esa huquqshunos bo‘lishingizni xohlaydi. Kechki choy ustida mavzu ochildi.",
+  steps:[
+   {cue:"Otangiz piyolani qo‘yib, sizga jiddiy qaradi.",say:"Xo‘sh, hujjatlarni qaysi fakultetga topshirasan?",
+    o:[{t:"“Men IT’ga topshiraman, bu mening hayotim.”",q:0,fb:"Kattaga keskin rad javob — O‘rta Osiyo muhitida hurmatsizlik sifatida qabul qilinadi va suhbat yopiladi.",r:"Otangizning qoshlari chimirildi, u indamay qoldi."},
+       {t:"“Dada, shu haqida maslahatlashmoqchi edim. Sizning fikringizni bilishim men uchun muhim.”",q:2,fb:"Hurmat va maslahat so‘rash — kattaga nazorat hissini qaytaradi, suhbat ochiq qoladi.",r:"Otangiz biroz yumshadi: “Gapir, eshitaman.”"},
+       {t:"“Bilmayman hali…”",q:1,fb:"Nizodan qochish. Lekin masala ochiq qoladi va otangiz o‘zi qaror qilishi mumkin.",r:"Otangiz: “Unda huquqshunoslikka topshirasan.”"}]},
+   {cue:"Otangiz o‘z fikrida qat’iy.",say:"Huquqshunos — obro‘li, barqaror kasb.",
+    o:[{t:"“Siz haqsiz, barqarorlik muhim. Men IT’da ham barqaror daromad bo‘lishini ko‘rsatib bersam maylimi? Mana, bitiruvchilar qayerda ishlayotgani…”",q:2,fb:"Avval qadriyatini tan olish (barqarorlik), keyin uning tilida dalil. Bahs emas — birgalikda o‘ylash.",r:"Otangiz qo‘llarini tushirib, oldinga engashdi: “Ko‘rsat-chi.”"},
+       {t:"“Huquqshunoslar ko‘p, ish yo‘q.”",q:0,fb:"Otaning tanlovini kamsitish — uning obro‘siga tegadi. Himoya kuchayadi.",r:"Otangiz ovozini ko‘tardi: “Sen menga o‘rgatma!”"},
+       {t:"Indamay bosh egib o‘tirish.",q:1,fb:"Hurmatli, lekin fikringiz eshitilmaydi. Muloyim tarzda dalilingizni ayting.",r:"Otangiz: “Demak, kelishdik.”"}]},
+   {cue:"Otangiz o‘ylanib qoldi, choy quydi.",say:"Bilmadim… onang nima deydi?",
+    o:[{t:"“Keling, onam bilan birga yana bir gaplashaylik. Qaror qilishdan oldin sizning duongiz kerak.”",q:2,fb:"Oilaviy qarorni birgalikda qabul qilish va duo so‘rash — bizning muhitda eng ishonchli yo‘l.",r:"Otangiz jilmaydi: “Mayli, ertaga gaplashamiz.”"},
+       {t:"“Onam allaqachon rozi.”",q:0,fb:"Otani chetlab o‘tish — ishonchni buzadi va oilada nizo chiqaradi.",r:"Otangiz xafa bo‘lib: “Demak, mendan keyin so‘rayapsizlar…”"},
+       {t:"“Siz nima desangiz, shu.”",q:1,fb:"Hurmatli, lekin o‘z istagingizdan voz kechyapsiz. Hech bo‘lmasa yana bir suhbat so‘rang.",r:"Otangiz: “Yaxshi, o‘ylab ko‘ramiz.”"}]}
+  ]}
+];
+const simTabs=document.getElementById("simTabs"),simBox=document.getElementById("simBox");
+simTabs.innerHTML=SIMS.map((s,i)=>`<button class="tab" data-i="${i}">${s.t}</button>`).join("");
+let SI=0,SS=0,SP=0,SLOG=[],SREACT="";
+function startSim(i){SI=i;SS=0;SP=0;SLOG=[];SREACT="";simTabs.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));drawSim();}
+function drawSim(){
+  const S=SIMS[SI];
+  if(SP>=S.steps.length){
+    const max=S.steps.length*2,pct=Math.round(SS/max*100);
+    simBox.innerHTML=`<h3>${S.t}: natija</h3>
+      <div class="scorebar"><i style="width:${pct}%"></i></div>
+      <p><b>${SS} / ${max} ball (${pct}%)</b> — ${pct>=80?"A’lo! Siz hurmat, his-tuyg‘u va aniqlikni muvozanatda tutdingiz.":pct>=50?"Yomon emas. Quyidagi izohlarga qarab, yana bir bor urinib ko‘ring.":"Bu suhbat yaxshi tugamadi. Izohlarni o‘qib, qayta o‘ynang — ikkinchi urinish doim yaxshiroq."}</p>
+      <ol class="slog">${SLOG.map(l=>`<li><span class="q${l.q}">${["Xato","O‘rtacha","Kuchli"][l.q]}</span> ${l.t}<br><small>${l.fb}</small></li>`).join("")}</ol>
+      <button class="btn" id="simAgain">Qaytadan o‘ynash</button>`;
+    document.getElementById("simAgain").onclick=()=>startSim(SI);return;
+  }
+  const st=S.steps[SP];
+  if(!st._ord||st._sp!==SI+"-"+SP+"-"+SLOG.length){st._ord=st.o.map((_,i)=>i).sort(()=>Math.random()-.5);st._sp=SI+"-"+SP+"-"+SLOG.length;}
+  simBox.innerHTML=`${SP===0?`<p class="sintro">${S.intro}</p>`:""}
+    ${SREACT?`<p class="sreact">↳ ${SREACT}</p>`:""}
+    <div class="snpc"><div class="scue">👁 ${st.cue}</div><div class="ssay"><b>${S.who}:</b> “${st.say}”</div></div>
+    <div class="sopts">${st._ord.map(i=>`<button class="opt" data-i="${i}">${st.o[i].t}</button>`).join("")}</div>
+    <p class="explain" id="sfb"></p>
+    <div class="quiz-foot"><span>Qadam ${SP+1} / ${S.steps.length} · Ball: ${SS}</span><button class="btn" id="snext" style="display:none;margin:0">Davom etish →</button></div>`;
+  simBox.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const o=st.o[+b.dataset.i];
+    simBox.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+    b.classList.add(o.q===2?"correct":o.q===0?"incorrect":"midpick");
+    SS+=o.q;SLOG.push(o);SREACT=o.r;
+    const fb=document.getElementById("sfb");fb.style.display="block";
+    fb.innerHTML=`<b>${["Xato yo‘l.","O‘rtacha.","Kuchli javob!"][o.q]}</b> ${o.fb}<br><i>${S.who} reaksiyasi: ${o.r}</i>`;
+    const n=document.getElementById("snext");n.style.display="inline-flex";n.onclick=()=>{SP++;drawSim();};
+  });
+}
+simTabs.onclick=e=>{const b=e.target.closest(".tab");if(b)startSim(+b.dataset.i);};
+startSim(0);
+
+/* ================= LUG'AT ================= */
+const GLOSS=[
+ ["Bazaviy holat (baseline)","Odamning xotirjam paytidagi odatiy xatti-harakati. Signal — undan og‘ish, harakatning o‘zi emas."],
+ ["Klaster","Bir vaqtda paydo bo‘lgan, bir-birini tasdiqlaydigan bir nechta signal. Bitta belgidan xulosa qilinmaydi."],
+ ["Limbik tizim","Miyaning his-tuyg‘u va “omon qolish” reaksiyalarini boshqaradigan qismi. Navarro: qotib qolish, qochish va kurashish reaksiyalari shu yerdan."],
+ ["Qotib qolish (freeze)","Xavf yoki stressda harakatlarning to‘satdan kamayishi yoki to‘xtashi."],
+ ["O‘zini tinchlantirish (pacifying)","Stressda bo‘yin, yuz, qo‘llarni silash, ishqalash — asab tizimini tinchlantirishga urinish."],
+ ["Ventral tomon","Tananing old qismi (ko‘krak, qorin). Odam yoqtirgan kishisiga shu tomon bilan buriladi, yoqtirmaganidan uni yashiradi."],
+ ["Duchenne tabassumi","Og‘iz bilan birga ko‘z atrofi mushagi ham qisiladigan, ko‘pincha samimiy tabassum. Fransuz nevrologi Duchenne nomi bilan atalgan."],
+ ["Mikroifoda","Soniyaning bir qismida yuzda chaqnab o‘tadigan his-tuyg‘u ifodasi (Ekman). Mavjud, lekin yolg‘onni aniqlash vositasi sifatida tasdiqlanmagan."],
+ ["FACS","Yuz harakatlarini kodlash tizimi (Ekman, Friesen). Har bir mushak harakati “harakat birligi” (AU) deb belgilanadi."],
+ ["Ko‘z to‘sish (eye blocking)","Yoqimsiz narsani ko‘rganda yoki eshitganda ko‘zni yumish, qo‘l bilan to‘sish."],
+ ["Gumbaz (steepling)","Barmoq uchlarini bir-biriga tirab qo‘yish — o‘ziga ishonch belgisi."],
+ ["Oynalash (mirroring)","1) Suhbatdosh holatini beixtiyor takrorlash — yaqinlik belgisi (xameleon effekti). 2) Voss usuli: suhbatdoshning oxirgi 2–3 so‘zini savol ohangida takrorlash."],
+ ["Belgilash (labeling)","Suhbatdoshning his-tuyg‘usini ovoz chiqarib nomlash: “Sizga qiyin bo‘lib turgandek tuyulyapti…” (Voss)."],
+ ["“Tungi radio” ovozi","Past, sekin, gap oxirida pastga tushadigan sokin ovoz — tinchlantiradi (Voss)."],
+ ["Otello xatosi","Rost gapirayotgan odamning hayajonini yolg‘on belgisi deb noto‘g‘ri talqin qilish (Ekman)."],
+ ["Yuqori / past kontekstli madaniyat","Yuqori kontekst: ko‘p narsa so‘zsiz, ishora orqali tushuniladi (O‘rta Osiyo, Yaponiya). Past kontekst: hamma narsa aniq aytiladi (AQSh, Germaniya). Hall, Meyer."],
+ ["Ierarxiya","Yosh va mavqega qarab munosabat tartibi. Ierarxik madaniyatda rahbar va kattaga ochiq e’tiroz kam bildiriladi."],
+ ["Meta-tahlil","Ko‘plab tadqiqot natijalarini birlashtirib, umumiy xulosa chiqarish usuli. Bitta tadqiqotdan ancha ishonchli."],
+ ["CBCA","Mezonlarga asoslangan mazmun tahlili — hikoyadagi tafsilot, tuzilish va boshqa belgilar orqali ishonchlilikni baholash usuli."],
+ ["Reality Monitoring","Haqiqiy boshdan kechirilgan voqea xotirasida sezgi (ko‘rish, eshitish), joy va vaqt tafsilotlari ko‘proq bo‘lishiga asoslangan tahlil usuli."],
+ ["Kognitiv yuk","Fikrlash uchun sarflanadigan aqliy kuch. Yolg‘on to‘qish ko‘pincha ko‘proq yuk talab qiladi — Vrij usullari shunga asoslanadi."],
+ ["SUE usuli","Dalillarni strategik ishlatish (Granhag, Hartwig): dalilni oxirida ko‘rsatib, odamning avvalgi gapi bilan solishtirish."],
+ ["Mehrabian qoidasi (7-38-55)","His-tuyg‘u haqidagi zid xabarda so‘z, ohang va yuz ifodasining nisbiy ta’siri. Umumiy muloqotga qo‘llanmaydi."],
+ ["Kuch pozasi","Keng, ochiq turish. O‘zini kuchliroq his qilishga yordam berishi mumkin; gormonlarga ta’siri tasdiqlanmagan."]
+];
+const glossEl=document.getElementById("gloss");
+function drawG(q=""){
+  const t=q.trim().toLowerCase();
+  const items=GLOSS.filter(([a,b])=>!t||a.toLowerCase().includes(t)||b.toLowerCase().includes(t));
+  glossEl.innerHTML=items.length?items.map(([a,b])=>`<div class="gi"><dt>${a}</dt><dd>${b}</dd></div>`).join(""):`<p class="muted">Hech narsa topilmadi.</p>`;
+}
+document.getElementById("gq").oninput=e=>drawG(e.target.value);
+drawG();
+
+/* ================= RASMLAR: tana xaritasi va vaziyatlarga ================= */
 /* ================= BOOKS ================= */
 const BOOKS=[
   {t:"What Every BODY Is Saying",a:"Joe Navarro, Marvin Karlins · 2008",tags:["prac"],
