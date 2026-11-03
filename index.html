@@ -212,6 +212,24 @@
   .pex{margin:14px 0 0;color:#3d3832}
   @media (max-width:900px){.pgrid{grid-template-columns:1fr}}
 
+  .pct{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;margin-top:28px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .pcard h3{margin:0 0 4px;font-size:20px}
+  .hero .pcard .psub{margin:0 0 14px;font-size:14px;color:var(--muted)}
+  .prow{display:grid;grid-template-columns:minmax(150px,1.1fr) 1.4fr 48px;gap:12px;align-items:center;margin:9px 0;font-size:14px}
+  .prow small{display:block;color:var(--muted);font-size:12px}
+  .prow b{text-align:right;font-size:16px}
+  .pbar{position:relative;height:12px;background:#eee6da;border-radius:6px}
+  .pbar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:#c9a77a}
+  .pbar em{position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;background:var(--low)}
+  .prow.hi .pbar i{background:var(--ok)} .prow.hi b{color:var(--ok)}
+  .hero .pcard .pnote{font-size:13px;color:#4a443d;margin:12px 0 0}
+  .stack{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:6px 0 10px}
+  .s1{background:#c9a77a} .s2{background:var(--accent)} .s3{background:#6a4a1f}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:14px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  @media (max-width:900px){.pct{grid-template-columns:1fr}.prow{grid-template-columns:1fr 1fr 44px}}
+
   @media (max-width:900px){
     .explorer{grid-template-columns:1fr}
     .panel{position:static;max-height:none}
@@ -240,6 +258,29 @@
   <div class="wrap">
     <h1>Tana tili: odamni “o‘qish” emas, tushunish san’ati</h1>
     <p>Bu qo‘llanma eng mashhur kitoblar (Navarro, Ekman, Pease, Morris) va ularni sinovdan o‘tkazgan ilmiy tadqiqotlar asosida tuzildi. Har bir signal yonida u qanchalik ishonchli ekani ochiq yozilgan — chunki tana tili haqidagi ma’lumotlarning katta qismi ommabop afsona.</p>
+
+    <div class="pct">
+      <div class="pcard">
+        <h3>Yolg‘onni aniqlash: qaysi kanal qancha beradi?</h3>
+        <p class="psub">Odamlar rost va yolg‘onni qanchalik to‘g‘ri ajratadi. <b>50% — tanga tashlash</b> (tasodif) darajasi.</p>
+        <div class="prow"><span>Faqat tana va yuz <small>(ovozsiz video)</small></span><div class="pbar"><i style="width:51%"></i><em></em></div><b>51%</b></div>
+        <div class="prow"><span>Faqat so‘z va ovoz <small>(audio)</small></span><div class="pbar"><i style="width:53%"></i><em></em></div><b>53%</b></div>
+        <div class="prow"><span>Hammasi birga <small>(video + ovoz)</small></span><div class="pbar"><i style="width:54%"></i><em></em></div><b>54%</b></div>
+        <div class="prow hi"><span>Gap mazmunini maxsus tahlil <small>(CBCA, Reality Monitoring)</small></span><div class="pbar"><i style="width:70%"></i><em></em></div><b>~70%</b></div>
+        <p class="pnote">Tana tili yolg‘on bo‘yicha deyarli tasodif darajasida. Eng ko‘p ma’lumotni <b>gapning mazmuni</b> beradi. Manba: Bond va DePaulo (2006) — 206 ta tadqiqot; Hauch va boshq. (2017) meta-tahlili (Caso va boshq., 2023 orqali).</p>
+      </div>
+      <div class="pcard">
+        <h3>His-tuyg‘u: so‘z ohangga zid kelganda</h3>
+        <p class="psub">Mehrabian (1967): odam <b>yoqtirish/yoqtirmaslik</b> haqida gapirganda va so‘zi ohangi yoki yuziga <b>zid</b> bo‘lganda, tinglovchi nimaga ishonadi.</p>
+        <div class="stack"><i class="s1" style="width:7%"></i><i class="s2" style="width:38%"></i><i class="s3" style="width:55%"></i></div>
+        <div class="legend">
+          <span><i class="s1"></i><b>7%</b> so‘zlar</span>
+          <span><i class="s2"></i><b>38%</b> ovoz ohangi</span>
+          <span><i class="s3"></i><b>55%</b> yuz ifodasi</span>
+        </div>
+        <p class="pnote"><b>Diqqat:</b> bu nisbat oddiy suhbatga tegishli emas. Tajribada bitta so‘z va yuz fotosuratlari ishlatilgan, butun tana o‘rganilmagan. Mehrabianning o‘zi bu formula faqat his-tuyg‘u va munosabat haqidagi zid xabarlarga tegishli ekanini ta’kidlagan.</p>
+      </div>
+    </div>
     <div class="stats">
       <div class="stat"><b>54%</b><span>Odamlar yolg‘onni o‘rtacha shu aniqlikda topadi — tanga tashlashdan sal yaxshiroq (206 ta tadqiqot)</span></div>
       <div class="stat"><b>158</b><span>Yolg‘on belgisi tekshirilgan; ularning aksariyati yolg‘on bilan bog‘lanmagan yoki juda kuchsiz bog‘langan</span></div>
@@ -548,6 +589,7 @@
       <li>Vrij, A., Palena, N., Leal, S. &amp; Caso, L. (2021). Complications, common knowledge details and self-handicapping strategies: a meta-analysis. <em>European Journal of Psychology Applied to Legal Context, 13</em>(2), 55–77. <a href="https://journals.copmadrid.org/ejpalc/art/ejpalc2021a7" target="_blank" rel="noopener">Maqola</a></li>
       <li>Vrij, A., Fisher, R. P. &amp; Blank, H. (2017). A cognitive approach to lie detection: A meta-analysis. <em>Legal and Criminological Psychology, 22</em>(1), 1–21.</li>
       <li>Vrij, A., Leal, S. &amp; Fisher, R. P. (2018). Verbal deception and the Model Statement. <em>Frontiers in Psychiatry, 9</em>, 492. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6190908/" target="_blank" rel="noopener">PMC</a></li>
+      <li>Caso, L., Cavagnis, L., Vrij, A. &amp; Palena, N. (2023). Cues to deception… <em>Frontiers in Psychology, 14</em>. CBCA va Reality Monitoring vositalari ~70% gacha aniqlikka erishgani haqidagi meta-tahlil ma’lumoti (Hauch va boshq., 2017) shu maqolada keltirilgan. <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1128194/full" target="_blank" rel="noopener">Frontiers</a></li>
       <li>Chartrand, T. L. &amp; Bargh, J. A. (1999). The chameleon effect. <em>Journal of Personality and Social Psychology, 76</em>(6), 893–910.</li>
       <li>Ekman, P. — Fake smile or genuine smile? <a href="https://www.paulekman.com/blog/fake-smile-or-genuine-smile/" target="_blank" rel="noopener">paulekman.com</a></li>
       <li>Mehrabian, A. — 7-38-55 qoidasining qo‘llanish chegaralari. <a href="https://en.wikipedia.org/wiki/Albert_Mehrabian" target="_blank" rel="noopener">Wikipedia</a></li>
