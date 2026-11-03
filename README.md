@@ -23,3 +23,6 @@ Yoki terminaldan: `npx vercel` (papka ichida).
 
 ## Tahrirlash
 Matnlar `index.html` ichidagi `<script>` qismida: `ZONES` (tana qismlari), `STATES` va `PRESETS` (kombinatsiya tahlilchisi, jumladan ovoz va nutq), `LOCAL` va `SITS` (vaziyatlar bo‘limi), `BOOKS` (kitoblar), `MYTHS` (afsonalar), `QUIZ` (test).
+
+## Audio misollar
+`audio/` papkasida 6 ta fayl bo‘lishi kerak: `1-xotirjam.mp3`, `2-asabiy.mp3`, `3-iliq.mp3`, `4-sovuq.mp3`, `5-sokin.mp3`, `6-gazab.mp3` (ElevenLabs, “Shohjahon” ovozi, eleven_v4). Fayl bo‘lmasa, saytda “Audio fayl hali yuklanmagan” yozuvi chiqadi.

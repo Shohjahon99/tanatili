@@ -200,6 +200,18 @@
   .sc.wide{grid-column:1/-1;background:var(--accent-soft)} .sc.wide small{color:var(--accent-ink)}
   @media (max-width:900px){.sgrid{grid-template-columns:1fr}}
 
+  /* audio */
+  .pair{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+  .pair h3{margin:0 0 14px;font-size:21px}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .aud{background:var(--bg);border-radius:12px;padding:14px}
+  .aud .al{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-ink)}
+  .aud p{margin:6px 0 10px;font-style:italic}
+  .aud audio{width:100%}
+  .amiss{font-size:13px;color:var(--muted);background:#eee6da;border-radius:8px;padding:8px 10px}
+  .pex{margin:14px 0 0;color:#3d3832}
+  @media (max-width:900px){.pgrid{grid-template-columns:1fr}}
+
   @media (max-width:900px){
     .explorer{grid-template-columns:1fr}
     .panel{position:static;max-height:none}
@@ -214,6 +226,7 @@
     <span class="brand">Tana tili</span>
     <a href="#xarita">Tana xaritasi</a>
     <a href="#tahlil">Kombinatsiya</a>
+    <a href="#ovoz">Ovoz</a>
     <a href="#vaziyatlar">Vaziyatlar</a>
     <a href="#qoidalar">Qoidalar</a>
     <a href="#kitoblar">Kitoblar</a>
@@ -403,8 +416,17 @@
   </div>
 </section>
 
+<!-- ============ OVOZ MISOLLARI ============ -->
+<section id="ovoz">
+  <div class="wrap">
+    <h2>Ovozni eshitib ko‘ring</h2>
+    <p class="lead">Bitta odam, bir xil yoki o‘xshash gap — turli ohang. Har bir juftlikni tinglab, farqni o‘zingiz sezing. Audio ElevenLabs sun’iy intellekti yordamida o‘zbek tilida yaratilgan.</p>
+    <div class="pairs" id="pairs"></div>
+  </div>
+</section>
+
 <!-- ============ VAZIYATLAR ============ -->
-<section id="vaziyatlar">
+<section id="vaziyatlar" style="background:#f5f0e8">
   <div class="wrap">
     <h2>Vaziyatga qarab: qanday gapirish va o‘zini tutish</h2>
     <p class="lead">Muzokara, madaniyatlararo muloqot va qiyin suhbatlar bo‘yicha eng nufuzli kitoblar (Voss, Fisher va Ury, “Crucial Conversations”, Erin Meyer, Edward Hall, Navarro) O‘zbekiston va O‘rta Osiyo odob-axloqiga moslab berildi. Har bir vaziyatda: tana, ovoz, aytsa bo‘ladigan gaplar, nimadan qochish kerak va suhbatdoshni qanday “o‘qish” kerak.</p>
@@ -1094,6 +1116,28 @@ function update(){
     <h4>Keyingi qadam</h4><ul>${nextSteps(a).map(x=>`<li>${x}</li>`).join("")}</ul>`;
 }
 update();
+
+/* ================= OVOZ MISOLLARI ================= */
+const PAIRS=[
+ {t:"Bir xil alibi: xotirjam va asabiy",
+  a:{f:"audio/1-xotirjam.mp3",l:"Xotirjam",txt:"“Kecha kechqurun uyda edim. Soat sakkizlarda onam bilan choy ichdik, keyin yangiliklarni ko‘rdim.”"},
+  b:{f:"audio/2-asabiy.mp3",l:"Asabiy",txt:"“Kecha… kechqurun… uyda edim. Ha. Uyda edim.”"},
+  ex:"Ikkinchisida pauzalar, ingichkaroq ovoz va takrorlash bor — bu <b>stress</b> belgisi, lekin yolg‘on isboti emas: ishonishmayotganidan qo‘rqqan rostgo‘y ham shunday gapiradi. Muhimroq farq — <b>mazmunda</b>: birinchisida vaqt, kim bilan, nima qilgani bor (tekshirsa bo‘ladigan tafsilot), ikkinchisida faqat umumiy da’vo. Vrij tadqiqotlariga ko‘ra, tafsilot boyligi ovozdan ko‘ra ishonchliroq belgi."},
+ {t:"“Yaxshi, roziman”: iliq va sovuq",
+  a:{f:"audio/3-iliq.mp3",l:"Iliq",txt:"“Yaxshi, roziman! Juda zo‘r fikr.”"},
+  b:{f:"audio/4-sovuq.mp3",l:"Sovuq",txt:"“Yaxshi… roziman. Juda zo‘r fikr.”"},
+  ex:"So‘zlar deyarli bir xil, ma’no esa teskari. Mehrabian tajribalari aynan shu holat haqida: <b>so‘z va ohang mos kelmasa</b>, tinglovchi ohangga ishonadi. Ikkinchi variantni eshitsangiz, “rozi” deb yozib qo‘ymang — “Sizni nimadir o‘ylantiryaptimi?” deb so‘rang. Bizning yuqori kontekstli muhitda bunday “yashirin yo‘q” ayniqsa ko‘p uchraydi."},
+ {t:"Nizoda: sokin ovoz va baland ovoz",
+  a:{f:"audio/5-sokin.mp3",l:"Sokin (Voss uslubi)",txt:"“Tushunaman. Hozir sizga qiyin bo‘lib turibdi. Keling, shoshilmasdan, birga yechim topamiz.”"},
+  b:{f:"audio/6-gazab.mp3",l:"G‘azabli",txt:"“Nega menga bunday qarayapsiz? Men hech narsa qilganim yo‘q!”"},
+  ex:"Birinchisi — Chris Voss tavsiya qiladigan “tungi radio” ovozi: past, sekin, gap oxirida pastga tushadi va his-tuyg‘uni nomlaydi (“sizga qiyin bo‘lib turibdi”). Ikkinchisi — himoyalanish va g‘azab. G‘azabga baland ovoz bilan javob bersangiz, nizo kuchayadi; sokin ovoz esa suhbatdoshni ham sekinlashtiradi. Baland ovoz ham yolg‘on belgisi emas — nohaq ayblangan odam ham shunday javob beradi."}
+];
+const AU=(x)=>`<div class="aud"><span class="al">${x.l}</span><p>${x.txt}</p>
+  <audio controls preload="none" src="${x.f}" onerror="this.outerHTML='<div class=&quot;amiss&quot;>Audio fayl hali yuklanmagan</div>'"></audio></div>`;
+document.getElementById("pairs").innerHTML=PAIRS.map((p,i)=>`
+  <article class="pair"><h3><span class="num">0${i+1}</span> ${p.t}</h3>
+   <div class="pgrid">${AU(p.a)}${AU(p.b)}</div>
+   <p class="pex">${p.ex}</p></article>`).join("");
 
 /* ================= VAZIYATLAR ================= */
 const LOCAL=[
