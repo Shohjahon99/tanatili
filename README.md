@@ -35,3 +35,16 @@ Matnlar `index.html` ichidagi `<script>` qismida: `ZONES` (tana qismlari), `STAT
 - **Suhbat simulyatori** — `SIMS` (3 ta stsenariy, har qadamda 3 tanlov)
 - **Lug‘at** — `GLOSS`
 - Tana xaritasida **Erkak / Ayol** tanlovi (ayol figurasi JS orqali `#figArt` dan yasaladi)
+
+## Fikr-mulohaza formasi (Telegram'ga)
+Forma `/api/feedback` (Vercel serverless funksiya, `api/feedback.js`) orqali xabarni Telegram'ga yuboradi. Sozlash:
+1. Telegram'da **@BotFather** → `/newbot` → bot nomini kiriting → **token** oling.
+2. Yangi botingizga istalgan xabar yozing (masalan, `salom`).
+3. Brauzerda oching: `https://api.telegram.org/bot<TOKEN>/getUpdates` → javobdagi `"chat":{"id": ...}` raqami — bu **chat ID**.
+   (Guruhga yuborish uchun botni guruhga qo‘shing; guruh ID si odatda `-100…` bilan boshlanadi.)
+4. Vercel → loyiha → **Settings → Environment Variables**:
+   - `TELEGRAM_BOT_TOKEN` = token
+   - `TELEGRAM_CHAT_ID` = chat ID
+5. **Deployments → Redeploy** (o‘zgaruvchilar yangi deploy’dan keyin ishlaydi).
+
+Token faqat serverda saqlanadi, sayt kodida ko‘rinmaydi. Spamga qarshi yashirin “tuzoq” maydoni bor.

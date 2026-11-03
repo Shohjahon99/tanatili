@@ -269,6 +269,26 @@
   .gi dd{margin:0;color:#3d3832;font-size:15px}
   @media (max-width:900px){.dgrid{grid-template-columns:1fr}}
 
+  /* feedback */
+  .fb{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;max-width:860px;display:grid;gap:14px}
+  .fb label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
+  .fb label small{font-weight:400;color:var(--muted)}
+  .fb input:not([type=checkbox]),.fb select,.fb textarea{font:15px Inter,sans-serif;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+  .fb textarea{resize:vertical}
+  .fb input:focus,.fb select:focus,.fb textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .fb .ctx{flex-direction:row;font-weight:400}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
+  .stars{display:flex;align-items:center;gap:2px;font-size:14px}
+  .stars span{margin-right:8px}
+  .stars button{border:0;background:none;font-size:26px;color:#d3cbbf;cursor:pointer;padding:0 2px;line-height:1}
+  .stars button.on{color:var(--accent)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink);justify-self:start;margin-top:0}
+  .btn.primary:disabled{opacity:.6;cursor:wait}
+  .fmsg{margin:0;font-size:15px}
+  .fmsg.ok{color:var(--ok)} .fmsg.err{color:var(--low)}
+  @media (max-width:700px){.frow{grid-template-columns:1fr}}
+
   @media (max-width:900px){
     .explorer{grid-template-columns:1fr}
     .panel{position:static;max-height:none}
@@ -292,6 +312,7 @@
     <a href="#afsonalar">Afsonalar</a>
     <a href="#test">Test</a>
     <a href="#lugat">Lug‘at</a>
+    <a href="#fikr">Fikr bildirish</a>
     <a href="#manbalar">Manbalar</a>
   </div>
 </nav>
@@ -627,8 +648,52 @@
   </div>
 </section>
 
+<!-- ============ FIKR ============ -->
+<section id="fikr" style="background:#f5f0e8">
+  <div class="wrap">
+    <h2>Mutaxassislar fikri</h2>
+    <p class="lead">Psixolog, psixoterapevt, o‘qituvchi yoki shu sohani o‘rganayotgan bo‘lsangiz — fikringiz biz uchun juda muhim. Xato, noaniqlik yoki qo‘shimcha manba ko‘rsangiz, yozib qoldiring. Har bir xabarni o‘qib, saytni yangilab boramiz.</p>
+    <form class="fb" id="fbForm" novalidate>
+      <div class="frow">
+        <label>Ismingiz<input name="ism" maxlength="80" autocomplete="name"></label>
+        <label>Kasbingiz
+          <select name="kasb">
+            <option value="">Tanlang…</option>
+            <option>Psixolog</option><option>Psixoterapevt</option><option>Klinik psixolog</option>
+            <option>O‘qituvchi / pedagog</option><option>Talaba (psixologiya)</option>
+            <option>HR / kadrlar mutaxassisi</option><option>Boshqa</option>
+          </select>
+        </label>
+      </div>
+      <div class="frow">
+        <label><span>Tashkilot <small>(ixtiyoriy)</small></span><input name="tashkilot" maxlength="120" autocomplete="organization"></label>
+        <label>Qaysi bo‘lim haqida
+          <select name="bolim">
+            <option value="Umumiy">Umumiy</option><option>Tana xaritasi</option><option>Kombinatsiya tahlilchisi</option>
+            <option>Ovoz misollari</option><option>Vaziyatlar</option><option>Mashq rejimi</option>
+            <option>Suhbat simulyatori</option><option>Kitoblar tahlili</option><option>Afsonalar</option><option>Lug‘at</option>
+          </select>
+        </label>
+      </div>
+      <label>Fikr yoki taklifingiz *<textarea name="fikr" rows="6" maxlength="3000" required placeholder="Masalan: “Bo‘yin bo‘limida … tadqiqotini ham qo‘shish kerak”, yoki “Simulyatorda … vaziyati foydali bo‘lardi”"></textarea></label>
+      <div class="frow">
+        <div class="stars" role="radiogroup" aria-label="Saytga baho">
+          <span>Saytga baho:</span>
+          <input type="hidden" name="baho">
+          <button type="button" data-v="1" aria-label="1">★</button><button type="button" data-v="2" aria-label="2">★</button><button type="button" data-v="3" aria-label="3">★</button><button type="button" data-v="4" aria-label="4">★</button><button type="button" data-v="5" aria-label="5">★</button>
+        </div>
+        <label><span>Aloqa uchun <small>(Telegram yoki email, ixtiyoriy)</small></span><input name="aloqa" maxlength="120" placeholder="@username yoki email"></label>
+      </div>
+      <label class="ctx"><input type="checkbox" name="rozilik"> Ismimni saytdagi “Maslahat berganlar” ro‘yxatida ko‘rsatishga roziman</label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn primary" type="submit">Yuborish</button>
+      <p class="fmsg" id="fbMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ MANBALAR ============ -->
-<section id="manbalar" class="sources" style="background:#f5f0e8">
+<section id="manbalar" class="sources">
   <div class="wrap">
     <h2>Manbalar</h2>
     <p class="lead">Kitoblar va ilmiy maqolalar. Havolalar asl nashr yoki rasmiy ma’lumotlar bazasiga olib boradi.</p>
@@ -1579,6 +1644,27 @@ document.getElementById("gq").oninput=e=>drawG(e.target.value);
 drawG();
 
 /* ================= RASMLAR: tana xaritasi va vaziyatlarga ================= */
+/* ================= FIKR FORMASI ================= */
+(function(){
+  const f=document.getElementById("fbForm"),msg=document.getElementById("fbMsg"),bh=f.querySelector("[name=baho]");
+  f.querySelectorAll(".stars button").forEach(b=>b.onclick=()=>{bh.value=b.dataset.v;f.querySelectorAll(".stars button").forEach(x=>x.classList.toggle("on",+x.dataset.v<=+b.dataset.v));});
+  f.onsubmit=async e=>{
+    e.preventDefault();
+    const fd=new FormData(f), data=Object.fromEntries(fd.entries());
+    data.rozilik=f.rozilik.checked; data.baho=data.baho?+data.baho:null;
+    msg.className="fmsg";
+    if((data.fikr||"").trim().length<10){msg.className="fmsg err";msg.textContent="Iltimos, fikringizni biroz batafsilroq yozing (kamida 10 belgi).";f.fikr.focus();return;}
+    const btn=f.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Yuborilmoqda…";
+    try{
+      const r=await fetch("/api/feedback",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok&&j.ok){f.reset();f.querySelectorAll(".stars button").forEach(x=>x.classList.remove("on"));bh.value="";msg.className="fmsg ok";msg.textContent="Rahmat! Fikringiz yuborildi. Uni albatta ko‘rib chiqamiz.";}
+      else{msg.className="fmsg err";msg.textContent=j.error||"Yuborib bo‘lmadi. Birozdan keyin qayta urinib ko‘ring.";}
+    }catch{msg.className="fmsg err";msg.textContent="Internet bilan bog‘lanib bo‘lmadi. Qayta urinib ko‘ring.";}
+    btn.disabled=false;btn.textContent="Yuborish";
+  };
+})();
+
 /* ================= BOOKS ================= */
 const BOOKS=[
   {t:"What Every BODY Is Saying",a:"Joe Navarro, Marvin Karlins · 2008",tags:["prac"],
