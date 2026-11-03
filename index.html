@@ -147,6 +147,13 @@
   .opt2:hover{border-color:var(--accent)}
   .opt2.on{background:#e3f1e5;border-color:var(--ok)}
   .opt2 small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  .extra-parts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 4px 6px}
+  .part-btn{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:12px;text-align:left;cursor:pointer;font:14px Inter,sans-serif;color:var(--ink)}
+  .part-btn b{display:block;font-size:16px}
+  .part-btn span{color:var(--muted);font-size:13px}
+  .part-btn:hover{border-color:var(--accent)}
+  .part-btn.active{border-color:var(--accent);background:var(--accent-soft)}
+  .part-btn.set{border-color:var(--ok);background:#e3f1e5}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
   .chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 6px 5px 11px;font-size:13px}
   .chip button{border:0;background:#eee6da;border-radius:50%;width:20px;height:20px;cursor:pointer;line-height:1;color:var(--muted)}
@@ -172,6 +179,27 @@
   .warn{background:#fbf1ef;border-radius:10px;padding:12px 14px;color:#6b2a20;margin-bottom:12px}
   @media (max-width:900px){.rgrid{grid-template-columns:1fr}}
 
+  /* situations */
+  .local{background:var(--card);border-radius:var(--radius);padding:22px;margin-bottom:26px}
+  .local h3{margin:0 0 14px;font-size:22px}
+  .local .card{background:#fff}
+  .local .card h3{font-size:17px;margin:0 0 4px}
+  .local .card p{font-size:15px}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font:500 14px Inter,sans-serif;color:var(--ink);cursor:pointer}
+  .tab:hover{border-color:var(--accent)}
+  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .sit{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .sit h3{margin:0 0 14px;font-size:24px}
+  .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .sc{background:var(--bg);border-radius:12px;padding:14px 16px}
+  .sc small{display:block;font-weight:600;font-size:13px;color:var(--muted);margin-bottom:4px}
+  .sc ul{margin:0;padding-left:20px} .sc li{margin:4px 0}
+  .sc.say{background:#eef6ef} .sc.say small{color:var(--ok)}
+  .sc.no{background:#fbf1ef} .sc.no small{color:var(--low)}
+  .sc.wide{grid-column:1/-1;background:var(--accent-soft)} .sc.wide small{color:var(--accent-ink)}
+  @media (max-width:900px){.sgrid{grid-template-columns:1fr}}
+
   @media (max-width:900px){
     .explorer{grid-template-columns:1fr}
     .panel{position:static;max-height:none}
@@ -186,6 +214,7 @@
     <span class="brand">Tana tili</span>
     <a href="#xarita">Tana xaritasi</a>
     <a href="#tahlil">Kombinatsiya</a>
+    <a href="#vaziyatlar">Vaziyatlar</a>
     <a href="#qoidalar">Qoidalar</a>
     <a href="#kitoblar">Kitoblar</a>
     <a href="#afsonalar">Afsonalar</a>
@@ -350,6 +379,10 @@
           <g id="labels2"></g>
         </svg>
         <p class="hint">Yashil yorliq — holat tanlangan</p>
+        <div class="extra-parts">
+          <button class="part-btn" data-z="ovoz"><b>Ovoz ohangi</b><span>balandlik, pauza, titrash</span></button>
+          <button class="part-btn" data-z="nutq"><b>Gap mazmuni</b><span>tafsilot, ziddiyat, chetlab o‘tish</span></button>
+        </div>
       </div>
 
       <aside class="panel" id="picker">
@@ -370,8 +403,25 @@
   </div>
 </section>
 
+<!-- ============ VAZIYATLAR ============ -->
+<section id="vaziyatlar">
+  <div class="wrap">
+    <h2>Vaziyatga qarab: qanday gapirish va o‘zini tutish</h2>
+    <p class="lead">Muzokara, madaniyatlararo muloqot va qiyin suhbatlar bo‘yicha eng nufuzli kitoblar (Voss, Fisher va Ury, “Crucial Conversations”, Erin Meyer, Edward Hall, Navarro) O‘zbekiston va O‘rta Osiyo odob-axloqiga moslab berildi. Har bir vaziyatda: tana, ovoz, aytsa bo‘ladigan gaplar, nimadan qochish kerak va suhbatdoshni qanday “o‘qish” kerak.</p>
+
+    <div class="local">
+      <h3>Bizning muhitning 8 xususiyati</h3>
+      <div class="grid" id="localGrid"></div>
+      <p class="muted" style="margin-top:12px">Eslatma: Erin Meyer “Madaniyat xaritasi”da O‘zbekistonni alohida baholamagan. Bu yerdagi xulosalar mahalliy odob-axloq qoidalari va Meyer, Hall modellarining umumiy tamoyillariga asoslangan. Shahar va qishloq, avlodlar, Toshkent va viloyatlar o‘rtasida sezilarli farq bor.</p>
+    </div>
+
+    <div class="tabs" id="sitTabs" role="tablist"></div>
+    <div class="sit" id="sitBox"></div>
+  </div>
+</section>
+
 <!-- ============ QOIDALAR ============ -->
-<section id="qoidalar">
+<section id="qoidalar" style="background:#f5f0e8">
   <div class="wrap">
     <h2>Oltita oltin qoida</h2>
     <p class="lead">Barcha jiddiy mualliflar — FBI mutaxassisi Navarro ham, psixolog Ekman ham, tadqiqotchi Vrij ham — bitta narsada yakdil: alohida imo-ishora hech narsani isbotlamaydi. Quyidagi qoidalarsiz har qanday “signal” tasodifiy taxmin bo‘lib qoladi.</p>
@@ -456,6 +506,11 @@
       <li>Mehrabian, A. (1971). <em>Silent Messages.</em> Wadsworth.</li>
       <li>Cuddy, A. (2015). <em>Presence.</em> Little, Brown.</li>
       <li>Barrett, L. F. (2017). <em>How Emotions Are Made.</em> Houghton Mifflin Harcourt.</li>
+      <li>Voss, C. &amp; Raz, T. (2016). <em>Never Split the Difference.</em> HarperBusiness.</li>
+      <li>Meyer, E. (2014). <em>The Culture Map.</em> PublicAffairs.</li>
+      <li>Hall, E. T. (1976). <em>Beyond Culture.</em> Anchor Books.</li>
+      <li>Patterson, K. va boshq. (2002). <em>Crucial Conversations.</em> McGraw-Hill.</li>
+      <li>Fisher, R. &amp; Ury, W. (1981). <em>Getting to Yes.</em> Houghton Mifflin.</li>
     </ol>
     <h3>Ilmiy maqolalar</h3>
     <ol>
@@ -468,6 +523,9 @@
       <li>Ranehill, E. va boshq. (2015). Assessing the robustness of power posing. <em>Psychological Science, 26</em>(5), 653–656.</li>
       <li>Credé, M. (2019). A negative effect of a contractive pose is not evidence for the positive effect of an expansive pose. <em>Meta-Psychology, 3.</em> <a href="https://www.sciencedaily.com/releases/2019/10/191001110824.htm" target="_blank" rel="noopener">Qisqacha</a></li>
       <li>Frank, M. G. &amp; Ekman, P. (1993). Not all smiles are created equal. <em>Humor, 6</em>(1), 9–26.</li>
+      <li>Vrij, A., Palena, N., Leal, S. &amp; Caso, L. (2021). Complications, common knowledge details and self-handicapping strategies: a meta-analysis. <em>European Journal of Psychology Applied to Legal Context, 13</em>(2), 55–77. <a href="https://journals.copmadrid.org/ejpalc/art/ejpalc2021a7" target="_blank" rel="noopener">Maqola</a></li>
+      <li>Vrij, A., Fisher, R. P. &amp; Blank, H. (2017). A cognitive approach to lie detection: A meta-analysis. <em>Legal and Criminological Psychology, 22</em>(1), 1–21.</li>
+      <li>Vrij, A., Leal, S. &amp; Fisher, R. P. (2018). Verbal deception and the Model Statement. <em>Frontiers in Psychiatry, 9</em>, 492. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6190908/" target="_blank" rel="noopener">PMC</a></li>
       <li>Chartrand, T. L. &amp; Bargh, J. A. (1999). The chameleon effect. <em>Journal of Personality and Social Psychology, 76</em>(6), 893–910.</li>
       <li>Ekman, P. — Fake smile or genuine smile? <a href="https://www.paulekman.com/blog/fake-smile-or-genuine-smile/" target="_blank" rel="noopener">paulekman.com</a></li>
       <li>Mehrabian, A. — 7-38-55 qoidasining qo‘llanish chegaralari. <a href="https://en.wikipedia.org/wiki/Albert_Mehrabian" target="_blank" rel="noopener">Wikipedia</a></li>
@@ -846,13 +904,37 @@ const STATES={
     {id:"happy",t:"Oyoq uchida ko‘tarilyapti, “sakrayapti”",m:"xursandchilik, yaxshi kayfiyat",w:{c:2,i:1}},
     {id:"lock",t:"Oyoqlarini bir-biriga chalishtirib yashirdi",m:"xavotir, o‘zini ushlab turish",w:{s:2},flag:"stress"},
     {id:"kick",t:"Oyog‘i bilan bir tekis tepyapti",m:"sabrsizlik yoki asabiylik",w:{s:1,e:1}}
+  ]  ,
+  ovoz:[
+    {id:"calm",t:"Ovozi bir tekis, xotirjam",m:"bir tekis ovoz — xotirjamlik va o‘ziga ishonch",w:{c:2,k:1}},
+    {id:"warm",t:"Iliq, hazil aralash ohang",m:"iliq ohang — yaqinlik va qulaylik",w:{c:2,i:1}},
+    {id:"pitch",t:"Ovozi odatdagidan ingichkalashdi",m:"ovoz balandligining ko‘tarilishi — tadqiqotlarda yolg‘on bilan kuchsiz, lekin barqaror bog‘langan belgi; hayajonda ham bo‘ladi (DePaulo, 2003)",w:{s:2},flag:"pitch"},
+    {id:"pause",t:"Javobdan oldin uzoq pauza qilyapti",m:"uzoq pauza — fikr yuki ortgani: o‘ylab chiqarish yoki shunchaki eslashga urinish (Vrij)",w:{s:1},flag:"cog"},
+    {id:"fast",t:"Shoshib, tez gapiryapti",m:"tez gapirish — hayajon yoki shoshilish; tahlillarda nutq tezligi yolg‘on bilan bog‘lanmagan",w:{s:1,e:1}},
+    {id:"shaky",t:"Ovozi titrayapti",m:"ovoz titrashi — kuchli hayajon, qo‘rquv yoki yig‘lashga yaqinlik",w:{c:-1,s:3},flag:"stress"},
+    {id:"fade",t:"Ovozi pasayib, so‘nib ketdi",m:"so‘nayotgan ovoz — ishonchsizlik, xijolat yoki charchoq",w:{s:1,k:-2}},
+    {id:"loud",t:"Ovozi keskin ko‘tarildi",m:"baland ovoz — g‘azab yoki o‘zini himoya qilish",w:{c:-1,s:2,d:2}}
+  ],
+  nutq:[
+    {id:"detail",t:"Ko‘p aniq tafsilot: joy, vaqt, ism, tovush, his",m:"tafsilotga boy hikoya — haqiqatga ishora qiluvchi eng yaxshi o‘rganilgan belgi (Vrij; Amado, 2016)",w:{c:1},flag:"truth"},
+    {id:"compl",t:"Kutilmagan qiyinchiliklarni ham aytdi",m:"“avval eshik yopiq ekan, keyin…” kabi murakkabliklar — rostgo‘ylar ko‘proq aytadi (Vrij va boshq., 2021)",w:{c:1},flag:"truth"},
+    {id:"verif",t:"Tekshirsa bo‘ladigan dalil aytdi (guvoh, chek, xabar)",m:"tekshiriladigan tafsilotlar — rost gapirayotganlar ko‘proq beradi (Nahari, Vrij)",w:{k:1},flag:"truth"},
+    {id:"selfcorr",t:"Gap orasida o‘zini tuzatdi (“yo‘q, aniqrog‘i…”)",m:"o‘z-o‘zini tuzatish — tabiiy eslash belgisi; yolg‘onchilar buni kamroq qiladi (DePaulo, 2003)",w:{},flag:"truth"},
+    {id:"vague",t:"Umumiy, quruq gaplar, tafsilot kam",m:"umumiy gaplar — yolg‘onga kuchsiz ishora; lekin tafsilot kamligi o‘z-o‘zidan yolg‘on degani emas",w:{s:1},flag:"vague"},
+    {id:"forget",t:"Ko‘p “eslay olmayman”, “bilmayman” deyapti",m:"o‘zini cheklash — yolg‘onchilar tafsilot bermaslik uchun ko‘proq ishlatadi (Vrij va boshq., 2021)",w:{s:1,d:1},flag:"selfhand"},
+    {id:"dodge",t:"Savolga to‘g‘ri javob bermay, chetlab o‘tdi",m:"javobdan qochish — gapirishni istamagan mavzu bor",w:{s:1,d:1},flag:"dodge"},
+    {id:"contra",t:"Gaplari avvalgisiga yoki faktga zid",m:"ziddiyat — eng jiddiy belgi; lekin xotira xatosi ham bo‘lishi mumkin",w:{s:1},flag:"contra"},
+    {id:"oath",t:"Qasam ichyapti (“Xudo haqqi”, “ochig‘ini aytsam”)",m:"qasam — bizda ko‘pincha oddiy nutq odati; ilmiy jihatdan yolg‘on belgisi sifatida tasdiqlanmagan",w:{s:1},flag:"weak"}
   ]
+
 };
+const EXTRA=["ovoz","nutq"], ALLK=[...ORDER,...EXTRA];
+const nm=k=>({ovoz:"Ovoz",nutq:"Gap mazmuni"})[k]||LABELS[k][4];
 const PRESETS=[
-  {kozlar:"qochir",lablar:"lick",boyin:"collar",kaftlar:"wring",oyoqlar:"bounce",ctx:{cxBase:false,cxTime:false}},
+  {kozlar:"qochir",lablar:"lick",boyin:"collar",kaftlar:"wring",oyoqlar:"bounce",ovoz:"shaky",nutq:"detail",ctx:{cxBase:false,cxTime:false}},
   {kozlar:"tik",lablar:"duch",bosh:"tilt",tana:"mirror",oyoqlar:"crossstand",panjalar:"toward",ctx:{}},
   {lablar:"social",bosh:"nodfast",tana:"turned",oyoqlar:"knees",panjalar:"door",ctx:{cxBase:true}},
-  {kozlar:"stare",lablar:"press",boyin:"notch",yelka:"half",qollar:"freeze",ctx:{cxBase:true,cxTime:true}}
+  {kozlar:"stare",lablar:"press",boyin:"notch",yelka:"half",qollar:"freeze",ovoz:"pitch",nutq:"contra",ctx:{cxBase:true,cxTime:true}}
 ];
 const DIMS=[["s","Stress / xavotir"],["i","Qiziqish / ishtirok"],["k","O‘ziga ishonch"],["d","Himoyalanish / masofa"],["e","Ketish istagi"]];
 const sel={}; let cur=null;
@@ -862,8 +944,8 @@ makeLabels(lg2);
 
 function pick(k){
   cur=k;
-  document.querySelectorAll("#body2 .zone,#body2 .lbl").forEach(el=>el.classList.toggle("active",el.dataset.z===k));
-  document.getElementById("pkTitle").textContent=LABELS[k][4]+" — qanday holatda?";
+  document.querySelectorAll("#body2 .zone,#body2 .lbl,.part-btn").forEach(el=>el.classList.toggle("active",el.dataset.z===k));
+  document.getElementById("pkTitle").textContent=nm(k)+" — qanday holatda?";
   document.getElementById("pkHint").textContent="Ko‘rgan holatingizni tanlang. Qayta bossangiz, tanlov bekor qilinadi.";
   document.getElementById("pkOpts").innerHTML=STATES[k].map(st=>
     `<button class="opt2 ${sel[k]===st.id?'on':''}" data-id="${st.id}">${st.t}<small>${st.m}</small></button>`).join("");
@@ -876,6 +958,7 @@ function pick(k){
 document.getElementById("body2").addEventListener("click",e=>{const el=e.target.closest("[data-z]"); if(el) pick(el.dataset.z);});
 lg2.addEventListener("keydown",e=>{const el=e.target.closest("[data-z]"); if(el&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(el.dataset.z);}});
 ["cxBase","cxTime","cxCold","cxCult"].forEach(id=>document.getElementById(id).onchange=update);
+document.querySelectorAll(".part-btn").forEach(b=>b.onclick=()=>pick(b.dataset.z));
 document.querySelectorAll(".presets [data-p]").forEach(b=>b.onclick=()=>{
   const p=PRESETS[+b.dataset.p];
   Object.keys(sel).forEach(k=>delete sel[k]);
@@ -893,7 +976,7 @@ function getState(k){return STATES[k].find(s=>s.id===sel[k]);}
 
 function analyse(){
   const ctx={base:cxBase.checked,time:cxTime.checked,cold:cxCold.checked,cult:cxCult.checked};
-  const items=ORDER.filter(k=>sel[k]).map(k=>({k,st:getState(k)}));
+  const items=ALLK.filter(k=>sel[k]).map(k=>({k,st:getState(k)}));
   const tot={c:0,s:0,i:0,k:0,d:0,e:0}, notes=[];
   let pos=0,neg=0,flags={stress:0,freeze:0,mask:0,incon:0,stare:0};
   items.forEach(({st})=>{
@@ -903,7 +986,7 @@ function analyse(){
     if(st.tag==="cold"&&ctx.cold){w.d=(w.d||0)*0.4; w.c=Math.max(0,w.c||0); notes.push("Sovuq/noqulay muhit hisobga olindi: “"+st.t.toLowerCase()+"” ko‘proq jismoniy sababga bog‘liq bo‘lishi mumkin.");}
     Object.entries(w).forEach(([d,v])=>tot[d]+=v*f);
     if((w.c||0)>0) pos++; if((w.c||0)<0||(w.s||0)>=2) neg++;
-    if(st.flag) flags[st.flag]++;
+    if(st.flag) flags[st.flag]=(flags[st.flag]||0)+1;
   });
   return {ctx,items,tot,notes,pos,neg,flags,mixed:pos>0&&neg>0};
 }
@@ -924,11 +1007,14 @@ function headline(a){
 }
 
 function lieBlock(a){
-  const f=a.flags; let pts=f.stress*1+f.freeze*1.5+f.mask*1+f.incon*1.5+f.stare*0.5+(a.mixed?1:0);
+  const f=new Proxy(a.flags,{get:(o,k)=>o[k]||0});
+  let pts=f.stress*1+f.freeze*1.5+f.mask*1+f.incon*1.5+f.stare*0.5+(a.mixed?1:0)
+        +f.pitch*1+f.cog*0.5+f.vague*1+f.selfhand*1.5+f.dodge*1.5+f.contra*3+f.weak*0.3;
   if(a.ctx.time) pts+=2;
+  pts-=f.truth*1.5;
   if(!a.ctx.base) pts*=0.7;
   let lvl= pts<2.5?"low": pts<5?"mid":"high";
-  if(!a.ctx.time&&lvl==="high") lvl="mid";
+  if(!a.ctx.time&&!f.contra&&lvl==="high") lvl="mid";
   const why=[];
   if(f.stress) why.push(`${f.stress} ta stress / o‘zini tinchlantirish belgisi`);
   if(f.freeze) why.push("harakatning to‘satdan to‘xtashi (qotib qolish)");
@@ -937,6 +1023,13 @@ function lieBlock(a){
   if(f.stare) why.push("ataylab uzoq tikilish");
   if(a.mixed) why.push("qulaylik va noqulaylik signallari aralash");
   if(a.ctx.time) why.push("signallar aynan muhim savoldan keyin paydo bo‘lgan");
+  if(f.pitch) why.push("ovozning ingichkalashishi");
+  if(f.cog) why.push("javobdan oldingi uzoq pauza");
+  if(f.vague) why.push("tafsilotsiz, umumiy hikoya");
+  if(f.selfhand) why.push("ko‘p “eslay olmayman” deyish");
+  if(f.dodge) why.push("savoldan chetlab o‘tish");
+  if(f.contra) why.push("gaplardagi ziddiyat");
+  const truth=a.items.filter(x=>x.st.flag==="truth").map(x=>x.st.t.toLowerCase());
   const T={
     low:["v-low","Tekshirish zarurati: past","Yolg‘onga ishora qiluvchi jiddiy belgi yo‘q. Odam o‘zini nisbatan erkin his qilmoqda."],
     mid:["v-mid","Tekshirish zarurati: o‘rta","Odam nimadandir bezovta. Bu yolg‘on bo‘lishi ham, shunchaki hayajon, uyat yoki ishonishmasligidan qo‘rqish bo‘lishi ham mumkin."],
@@ -944,6 +1037,8 @@ function lieBlock(a){
   }[lvl];
   return `<div class="verdict ${T[0]}"><small>Yolg‘on gapiryaptimi?</small><b>${T[1]}</b><p>${T[2]}</p>
     ${why.length?`<p style="font-size:14px;margin-top:8px">Hisobga olinganlar: ${why.join("; ")}.</p>`:""}
+    ${truth.length?`<p style="font-size:14px;margin-top:6px"><b>Haqiqatga ishora qiluvchi belgilar:</b> ${truth.join("; ")}. Ular ko‘rsatkichni pasaytirdi.</p>`:""}
+    ${!sel.nutq?`<p style="font-size:13px;margin-top:6px">Maslahat: “Gap mazmuni”ni ham belgilang — tadqiqotlarda nutq belgilari tana belgilaridan ishonchliroq chiqqan.</p>`:""}
     <p style="font-size:13px;margin-top:8px;opacity:.85">Eslatma: ilmiy tadqiqotlarda tana tili bo‘yicha yolg‘onni topish aniqligi o‘rtacha 54% — tasodifdan sal yuqori. Shuning uchun bu ko‘rsatkich “yolg‘on ehtimoli” emas, “qanchalik e’tibor berish kerak” degan ma’noni bildiradi.</p></div>`;
 }
 
@@ -954,6 +1049,8 @@ function nextSteps(a,h){
   if(s>=3) out.push("Bosimni kamaytiring: ohangni yumshating, ochiq savol bering — “Bu mavzuda sizni nima o‘ylantiryapti?”");
   if(d>=3) out.push("Masofani hurmat qiling, ishonch uchun vaqt bering; to‘siqni olib tashlashga majburlamang.");
   if(a.flags.incon||a.flags.freeze||a.ctx.time) out.push("Batafsil so‘rang: “Buni boshidan aytib bering”. Haqiqiy voqea odatda ko‘proq tafsilot bilan tabiiy aytiladi (Vrij usuli).");
+  if(a.flags.vague||a.flags.selfhand) out.push("Ko‘proq gapirishga undang: “Hamma narsani, hatto mayda tuyulgan detallarni ham ayting”. Rost voqea bunday so‘rovdan keyin boyiydi.");
+  if(a.flags.contra) out.push("Dalil bo‘lsa, uni darhol ko‘rsatmang: avval odam o‘z variantini to‘liq aytsin, keyin farqni so‘rang (SUE usuli — Granhag va Hartwig).");
   if(a.ctx.time) out.push("Hukm chiqarmang — aytilganlarni boshqa manba yoki hujjat bilan solishtiring.");
   if(c>=4&&s<3) out.push("Suhbat yaxshi ketyapti — shu ohangni saqlang, muhim masalalarni hozir muhokama qilsa bo‘ladi.");
   if(!a.ctx.base) out.push("Bu odamning odatiy holatini bilmaysiz. Unga oddiy mavzuda bir necha daqiqa qarab, “normasi”ni aniqlang.");
@@ -966,9 +1063,9 @@ function bar(v,max){return Math.max(0,Math.min(100,Math.round(v/max*100)));}
 function update(){
   const n=Object.keys(sel).length;
   document.getElementById("cnt").textContent=n;
-  document.querySelectorAll("#body2 .lbl,#body2 .zone").forEach(el=>el.classList.toggle("set",!!sel[el.dataset.z]));
+  document.querySelectorAll("#body2 .lbl,#body2 .zone,.part-btn").forEach(el=>el.classList.toggle("set",!!sel[el.dataset.z]));
   const chips=document.getElementById("chips");
-  chips.innerHTML= n? ORDER.filter(k=>sel[k]).map(k=>`<span class="chip"><b>${LABELS[k][4]}:</b> ${getState(k).t}<button data-k="${k}" aria-label="Olib tashlash">×</button></span>`).join("")
+  chips.innerHTML= n? ALLK.filter(k=>sel[k]).map(k=>`<span class="chip"><b>${nm(k)}:</b> ${getState(k).t}<button data-k="${k}" aria-label="Olib tashlash">×</button></span>`).join("")
     : `<span class="muted">Hali hech narsa tanlanmagan</span>`;
   chips.querySelectorAll("button").forEach(b=>b.onclick=()=>{delete sel[b.dataset.k]; if(cur) pick(cur); update();});
 
@@ -979,7 +1076,7 @@ function update(){
   const dims=DIMS.map(([d,name])=>{const v=bar(a.tot[d],8);return `<div class="dim"><div class="row"><span>${name}</span><b>${v<15?"Past":v<45?"O‘rta":v<75?"Yuqori":"Juda yuqori"}</b></div><div class="track"><i style="left:0;width:${v}%;background:var(--accent)"></i></div></div>`;}).join("");
   const comfortBar=`<div class="dim"><div class="row"><span>Noqulaylik ← → Qulaylik</span><b>${comfortPct<40?"Noqulay":comfortPct>60?"Qulay":"O‘rtacha"}</b></div>
     <div class="track bi"><i style="${comfortPct>=50?`left:50%;width:${comfortPct-50}%;background:var(--ok)`:`left:${comfortPct}%;width:${50-comfortPct}%;background:var(--low)`}"></i></div></div>`;
-  const reasons=a.items.map(({k,st})=>`<li><b>${LABELS[k][4]}</b> — ${st.m}.</li>`).join("");
+  const reasons=a.items.map(({k,st})=>`<li><b>${nm(k)}</b> — ${st.m}.</li>`).join("");
   R.innerHTML=`
     <h3>${h}</h3><p class="sub">${hs}</p>
     ${n<3?`<div class="warn"><b>Signal kam (${n} ta).</b> Bitta-ikkita belgi asosida xulosa qilib bo‘lmaydi — kamida 3 ta, bir-birini tasdiqlaydigan signal tanlang.</div>`:""}
@@ -997,6 +1094,109 @@ function update(){
     <h4>Keyingi qadam</h4><ul>${nextSteps(a).map(x=>`<li>${x}</li>`).join("")}</ul>`;
 }
 update();
+
+/* ================= VAZIYATLAR ================= */
+const LOCAL=[
+  ["Yuqori kontekst","Ko‘p narsa to‘g‘ridan-to‘g‘ri aytilmaydi. “Ko‘ramiz”, “o‘ylab ko‘ramiz” ko‘pincha yumshoq “yo‘q” degani. Ohang, pauza va kim qayerda o‘tirgani so‘zdan kam gapirmaydi (Hall, Meyer)."],
+  ["Yosh va mavqe ierarxiyasi","Kattaga birinchi salom beriladi, gap kattaga birinchi beriladi, to‘r joy kattaniki. Rahbarga ochiq e’tiroz bildirish kam uchraydi — fikr ko‘pincha yakkama-yakka aytiladi."],
+  ["Avval munosabat, keyin ish","Ishga o‘tishdan oldin hol-ahvol, oila, salomatlik so‘raladi. To‘g‘ridan-to‘g‘ri mavzuga o‘tish sovuq, hatto qo‘pol tuyulishi mumkin."],
+  ["Salom va ko‘ks","O‘ng qo‘lni ko‘ksiga qo‘yib, sal egilish — hurmat belgisi. Erkaklar o‘zaro qo‘l berib ko‘rishadi; ayol bilan qo‘l berishni ayolning o‘zi boshlasa ma’qul."],
+  ["Ko‘z va hurmat","Kattaga, ota-onaga uzoq tik qarash ba’zan beodoblik deb qabul qilinadi. Shuning uchun ko‘z olib qochish bizda ko‘pincha hurmat — yolg‘on emas."],
+  ["O‘ng qo‘l va ishora","Narsa o‘ng qo‘l bilan beriladi va olinadi. Odamni ko‘rsatkich barmoq bilan ko‘rsatish qo‘pol — ochiq kaft bilan ishora qilinadi."],
+  ["Dasturxon va choy","Muhim gaplar ko‘pincha choy ustida aytiladi. Non hurmat qilinadi, choyni mezbon quyadi; piyolani to‘ldirmay quyish — “yana o‘tiring” degani."],
+  ["Obro‘ (yuz)","Odamni boshqalar oldida xijolat qilish munosabatni buzadi. Tanqid yolg‘iz, yumshoq va “biz” shaklida aytiladi."]
+];
+const SITS=[
+ {k:"katta",t:"Kattalar va ota-ona bilan",
+  body:["O‘tirishga ruxsat kutib o‘tiring, kattadan oldin o‘tirmang","Qo‘llarni tinch tuting; oyoq ustiga oyoq qo‘yish, cho‘zilib o‘tirish beodoblik sanaladi","Ko‘zga yumshoq qarang, lekin uzoq tik tikilmang","Kattani kuzatib qo‘ying, eshikni oching, piyolani ikki qo‘llab yoki o‘ng qo‘l bilan uzating"],
+  voice:["Past, sokin, shoshilmasdan","Kattaning gapini bo‘lmang — jim turish ham hurmat"],
+  say:["“Assalomu alaykum, yaxshi yuribsizmi, salomatliklaringiz yaxshimi?”","“Sizning maslahatingiz kerak edi…” — fikr so‘rash orqali kirish","“Siz aytgandek bo‘lsin, faqat bitta narsani o‘ylab qoldim…” — e’tirozni hurmat bilan aytish","“Uzr, tushunmay qoldim, yana bir bor aytib bera olasizmi?”"],
+  avoid:["“Yo‘q, siz noto‘g‘ri aytyapsiz” — keskin rad etish","Boshqalar oldida bahslashish","Telefonga qarab gaplashish"],
+  read:["Katta indamay qolsa yoki gapni boshqa mavzuga bursa — rozi emas, lekin ochiq aytmayapti","“Mayli, o‘zing bilasan” ko‘pincha xafa bo‘lganini bildiradi"],
+  src:"Meyer (2014) — ierarxiya shkalasi; mahalliy odob-axloq"},
+ {k:"intervyu",t:"Ish suhbati (intervyu)",
+  body:["Vaqtida keling; kirganda salom bering, qo‘lni suhbatdosh uzatsa bering","Tik, lekin bo‘shashgan o‘tiring, biroz oldinga engashing — qiziqish belgisi","Qo‘llarni stol ustida ko‘rinadigan holda tuting, javob berganda tabiiy imo-ishora qiling","Ko‘zga qarab gapiring (fikrlayotganda chetga qarash normal)"],
+  voice:["Javobni bir tekis ovozda tugating — gap oxirida ovozni ko‘tarmang, aks holda savoldek eshitiladi","Savoldan keyin 1–2 soniya o‘ylab olish — yaxshi belgi, kamchilik emas"],
+  say:["“Oldingi ishimda … muammo bor edi, men … qildim, natijada … bo‘ldi” — aniq misol bilan javob","“Bu savol bo‘yicha aniqroq ma’lumot bersangiz…”","Oxirida: “Bu lavozimda birinchi 3 oyda mendan nima kutasiz?”"],
+  avoid:["Oldingi rahbarni yomonlash","Umumiy gaplar: “men mas’uliyatliman, kirishimliman” — misolsiz","Maoshni birinchi bo‘lib so‘rash (agar ular boshlamasa)"],
+  read:["Intervyuchi oldinga engashib, savollarni chuqurlashtirsa — qiziqyapti","Tez bosh irg‘ash, soatga qarash — javobni qisqartiring"],
+  src:"Navarro (2008); Vrij — tafsilotli javob ishonch uyg‘otadi"},
+ {k:"rahbar",t:"Rahbar bilan: iltimos, norozilik, maosh",
+  body:["Muhim gapni yakkama-yakka, xotirjam vaqtda boshlang — majlisda emas","Rahbar o‘tirgan bo‘lsa, ruxsat so‘rab o‘tiring","Qo‘l qovushtirmang, kaftlar ochiq va ko‘rinadigan bo‘lsin"],
+  voice:["Voss tavsiya qiladigan “tungi radio” ovozi: past, sekin, gap oxirida ovoz pastga tushadi — bu xotirjamlik va ishonch bildiradi","Hissiyotga berilmang; g‘azab ovozni ko‘taradi"],
+  say:["“Ikki daqiqa vaqtingiz bormi? Bir masalada maslahatlashmoqchi edim.”","Natija bilan: “Shu yil … loyihani topshirdim, … mijoz qo‘shildi. Shuni hisobga olib, maoshim masalasini ko‘rib chiqsak.”","Belgilash (labeling): “Hozir byudjet masalasi qiyin bo‘lib turgandek tuyulyapti…”","Ochiq savol: “Bunga erishish uchun mendan nima kerak bo‘ladi?”"],
+  avoid:["Ultimatum: “Bo‘lmasa ketaman”","Boshqa xodim bilan solishtirish","Rahbarni boshqalar oldida tuzatish"],
+  read:["“Ko‘ramiz” + chetga qarash — hozircha yo‘q; muddatni aniqlashtiring: “Qachon qaytib gaplashsak bo‘ladi?”","Rahbar oldinga engashib, savol bersa — mavzuga ochiq"],
+  src:"Voss, Never Split the Difference (2016); Meyer (2014)"},
+ {k:"savdo",t:"Muzokara va savdolashish (bozor, biznes)",
+  body:["Shoshilmang — bizda savdolashish ham munosabat qurish","Choy taklif qilinsa, rad etmang; dasturxon atrofidagi suhbat ishonch qo‘shadi","Narx aytilganda yuzingiz bilan reaksiya qilmang — xotirjam pauza eng kuchli javob"],
+  voice:["Iliq, hazil aralash ohang bozorda yaxshi ishlaydi","Rasmiy muzokarada — sokin, sekin ovoz, uzun pauzalar"],
+  say:["“Yaxshi narsa ekan. Oxirgi narxi qancha bo‘ladi?”","Oynalash: oxirgi 2–3 so‘zni savol ohangida takrorlash — “Yuz ming?” — odatda tomonni ko‘proq tushuntirishga undaydi","“Qanday qilib buni … ga tushirsak bo‘ladi?” — “nima/qanday” bilan boshlanadigan savollar (Voss)","“Ikkimizga ham foydali yo‘lini topaylik” — manfaatga e’tibor (Fisher va Ury)"],
+  avoid:["Darhol “yo‘q, qimmat” deb ketib qolish (agar haqiqatan ketmoqchi bo‘lmasangiz)","Sotuvchini kamsitish — bozorda obro‘ muhim","Birinchi bo‘lib o‘z oxirgi narxingizni aytish"],
+  read:["Sotuvchi tanasini sizga burib, narx haqida o‘zi gap boshlasa — kelishishga tayyor","Lab qisish, chetga burilish — chegaraga yetdingiz"],
+  src:"Fisher & Ury, Getting to Yes (1981); Voss (2016)"},
+ {k:"mijoz",t:"Norozi mijoz yoki shikoyat",
+  body:["Mijozga to‘g‘ri qarab turing, qo‘llar ochiq; peshtaxta yoki stolni to‘siq qilmang","Bosh irg‘ab, tinglayotganingizni ko‘rsating","Mijoz baqirsa — siz ovozingizni pasaytiring"],
+  voice:["Sekin va past ovoz g‘azabni pasaytiradi","“Lekin” so‘zidan qoching — u oldingi gapni o‘chiradi"],
+  say:["“Haqsiz, bu yoqimsiz holat. Avval nima bo‘lganini to‘liq aytib bering.”","Belgilash: “Siz bunga ko‘p vaqt sarflagandek ko‘rinyapsiz…”","“Hozir … qila olaman. Bu sizga mos keladimi?”","Oxirida: “Yana bir bor uzr so‘rayman. Kelib aytganingiz uchun rahmat.”"],
+  avoid:["“Bu bizning aybimiz emas”","Mijoz gapini bo‘lish","Kulimsirab turish — mazax qilishdek tuyuladi"],
+  read:["Mijozning yelkalari tushib, nafas bir tekis bo‘lsa — tinchlandi, yechim taklif qiling","Qo‘llar belda, oldinga engashish — hali ham g‘azabda, tinglashda davom eting"],
+  src:"Patterson va boshq., Crucial Conversations (2002); Voss (2016)"},
+ {k:"sovchi",t:"Sovchilik, qudalar, to‘y-marosim",
+  body:["Kiyim tartibli va kamtarona bo‘lsin","Kattalarni oldinga o‘tkazing, ular gapirganda jim turing","Ayollar va erkaklar alohida o‘tirsa, shu tartibni hurmat qiling","Qo‘lni ko‘ksiga qo‘yib salomlashish — eng xavfsiz yo‘l"],
+  voice:["Muloyim, kamtar ohang; hazilni kattalar boshlasa qo‘shiling","Maqtovni ko‘paytirib yubormang — samimiy va qisqa"],
+  say:["“Xudo xohlasa, yaxshi niyat bilan keldik.”","“Ota-onangizni ko‘rganimizdan xursandmiz.”","Rad javobni yumshoq berish: “Hali ertaroq, bir oz o‘ylab ko‘raylik”"],
+  avoid:["To‘g‘ridan-to‘g‘ri “ha/yo‘q” talab qilish","Pul, sep, xarajatni birinchi uchrashuvda muhokama qilish","Telefon bilan band bo‘lish"],
+  read:["“O‘ylab ko‘ramiz, maslahatlashamiz” — ko‘pincha haqiqiy o‘ylash, ba’zan muloyim rad. Keyingi uchrashuvga taklif bo‘lsa — yaxshi belgi","Dasturxonga ko‘proq taom qo‘yilsa, mehmonni ushlab qolishsa — munosabat iliq"],
+  src:"Hall (1976) — yuqori kontekst; mahalliy odob-axloq"},
+ {k:"nizo",t:"Nizo va janjalni yumshatish",
+  body:["Odamga yon tomondan yoki burchak ostida turing — yuzma-yuz turish to‘qnashuvni kuchaytiradi","Qo‘llarni pastda, kaftlar ochiq tuting; barmoq bilan ko‘rsatmang","Masofa saqlang, tegmang"],
+  voice:["Uning ovozidan pastroq gapiring","Qisqa gaplar; nasihat va ma’ruza emas"],
+  say:["“Ko‘ryapman, siz qattiq xafa bo‘ldingiz.” — his-tuyg‘uni nomlash","“Siz uchun eng muhimi nima?”","“Ikkalamiz ham bir narsani xohlaymiz — …”","Kechirim kerak bo‘lsa, shartsiz: “Uzr, men noto‘g‘ri qildim.”"],
+  avoid:["“Tinchlaning!” — odatda aksincha ta’sir qiladi","Boshqalar oldida aybdorni aniqlash","Eski gaplarni qo‘zg‘ash"],
+  read:["Mushtlar qisilishi, yuz qizarishi, qo‘llarni belga qo‘yish, juda yaqinlashish — xavfli bosqich, masofa oling","Yelkalar bo‘shashib, nafas sekinlasha boshlasa — gapni hal qilishga o‘ting"],
+  src:"Patterson va boshq. (2002); Navarro (2008); Voss (2016)"},
+ {k:"taziya",t:"Ta’ziya va hamdardlik",
+  body:["Sokin kiring, qo‘lni ko‘ksiga qo‘yib, bosh egib salomlashing","Yonida jim o‘tirish — eng to‘g‘ri yordam","Tabassum qilmang, telefonni o‘chiring"],
+  voice:["Juda past, sekin; ko‘p gapirmang"],
+  say:["“Joylari jannatda bo‘lsin.”","“Alloh sabr bersin.”","“Biror ishga kerak bo‘lsam, ayting” — keyin haqiqatan yordam bering"],
+  avoid:["“Tushunaman, nima his qilayotganingizni” — ko‘pincha og‘riq beradi","Sabab, kasallik tafsilotlarini so‘rash","O‘z muammolaringizni gapirish"],
+  read:["Odam gapirmoqchi bo‘lsa, eshitib turing; jim bo‘lsa — jim o‘tiring"],
+  src:"Mahalliy odob-axloq; Crucial Conversations — xavfsizlik hissi"},
+ {k:"idora",t:"Davlat idorasi, rasmiy uchrashuv",
+  body:["Hujjatlarni tartibli, papkada olib keling","Navbatda sabr qiling; kirganda salom berib, o‘tirishga ruxsat kuting","Qo‘llarni stolga tirab yoki xodimga engashib gaplashmang"],
+  voice:["Rasmiy, bir tekis ohang; “siz” deb murojaat","Norozilikni ham sokin aytish ko‘proq natija beradi"],
+  say:["“Assalomu alaykum. Menga … masalasida yordamingiz kerak edi.”","“Qanday hujjat yetishmayapti? Yozib bera olasizmi?”","“Bu masalani yana kim hal qila oladi?” — xodimni ayblamasdan yo‘l so‘rash"],
+  avoid:["“Men sizdan shikoyat qilaman” bilan boshlash","Ovozni ko‘tarish, navbatsiz kirish","Telefonda baland gaplashish"],
+  read:["Xodim qog‘ozga qarab qisqa javob bersa — band yoki charchagan; savolni aniq va qisqa bering"],
+  src:"Meyer (2014) — ierarxik madaniyatlar"},
+ {k:"xorij",t:"Xorijlik yoki boshqa madaniyat vakili bilan",
+  body:["G‘arblik hamkasb uchun ko‘zga tik qarash — samimiylik belgisi; ko‘z qochirsangiz, ishonchsiz tuyulishingiz mumkin","Qo‘l berib ko‘rishish standart; ayollar ham ko‘pincha qo‘l beradi","Rus tilida so‘zlashuvchi hamkasblar bilan ham salomlashish odatda qisqaroq va kamroq marosimli bo‘ladi"],
+  voice:["Aniq va tushunarli gapiring; murakkab iboralar va kinoyani kamaytiring"],
+  say:["Past kontekstli madaniyatlar (AQSh, Germaniya, Niderlandiya) bilan: fikrni to‘g‘ridan-to‘g‘ri ayting, kelishuvni yozma tasdiqlang","“Tushunganimni tekshiray: biz … ga kelishdik, to‘g‘rimi?”","“Ko‘ramiz” o‘rniga aniq javob: “Juma kuni javob beraman”"],
+  avoid:["Ularning to‘g‘ridan-to‘g‘ri gapini qo‘pollik deb qabul qilish","Uzoq marosimli kirish (ular vaqtni qadrlaydi)","“Ha”ni rozilik deb hisoblash — ba’zan u faqat “eshitdim” degani"],
+  read:["Meyer: yuqori kontekstli odam past kontekstlini “ochiqdan-ochiq, hatto qo‘pol” deb, past kontekstli esa yuqori kontekstlini “yopiq, noaniq” deb o‘ylaydi — bu yolg‘on emas, uslub farqi"],
+  src:"Meyer, The Culture Map (2014); Hall, Beyond Culture (1976)"}
+];
+document.getElementById("localGrid").innerHTML=LOCAL.map(([h,p])=>`<div class="card"><h3>${h}</h3><p>${p}</p></div>`).join("");
+const tabs=document.getElementById("sitTabs"), sbox=document.getElementById("sitBox");
+tabs.innerHTML=SITS.map((s,i)=>`<button class="tab" role="tab" data-i="${i}">${s.t}</button>`).join("");
+function showSit(i){
+  const S=SITS[i];
+  tabs.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));
+  const L=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  sbox.innerHTML=`<h3>${S.t}</h3>
+   <div class="sgrid">
+    <div class="sc"><small>Tana tili</small>${L(S.body)}</div>
+    <div class="sc"><small>Ovoz va ohang</small>${L(S.voice)}</div>
+    <div class="sc say"><small>Aytsa bo‘ladigan gaplar</small>${L(S.say)}</div>
+    <div class="sc no"><small>Nimadan qochish kerak</small>${L(S.avoid)}</div>
+    <div class="sc wide"><small>Suhbatdoshni qanday “o‘qish”</small>${L(S.read)}</div>
+   </div>
+   <div class="src">Manba: ${S.src}</div>`;
+}
+tabs.onclick=e=>{const b=e.target.closest(".tab"); if(b) showSit(+b.dataset.i);};
+showSit(0);
 
 /* ================= BOOKS ================= */
 const BOOKS=[
@@ -1055,6 +1255,32 @@ const BOOKS=[
    minus:"Nazariy va murakkab; ba’zi olimlar universallik bo‘yicha xulosalariga qo‘shilmaydi.",
    v:"Ortiqcha ishonchdan saqlanish uchun majburiy o‘qish."}
 ];
+BOOKS.push(
+  {t:"Never Split the Difference",a:"Chris Voss, Tahl Raz · 2016",tags:["prac"],
+   who:"Voss — FBIning xalqaro garovga olish holatlari bo‘yicha bosh muzokarachisi bo‘lgan.",
+   idea:"Muzokara mantiqdan ko‘ra his-tuyg‘u bilan boshqariladi. Asosiy usullar: sokin “tungi radio” ovozi, oynalash (oxirgi so‘zlarni takrorlash), his-tuyg‘uni nomlash va “qanday/nima” bilan boshlanadigan savollar.",
+   plus:"Juda amaliy, usullar kundalik hayotda darhol ishlaydi. Ovoz ohangiga alohida e’tibor beradi.",
+   minus:"Asosan shaxsiy tajriba va hikoyalarga tayanadi; ba’zi raqamli da’volar manbasiz.",
+   v:"Qiyin suhbat va muzokara uchun eng foydali kitob."},
+  {t:"The Culture Map",a:"Erin Meyer · 2014",tags:["sci","prac"],
+   who:"Meyer — INSEAD biznes maktabi professori, madaniyatlararo menejment mutaxassisi.",
+   idea:"Madaniyatlar 8 shkalada farq qiladi: muloqot (yuqori/past kontekst), tanqid, ishontirish, rahbarlik, qaror qabul qilish, ishonch, bahs va vaqt. Edward Hallning yuqori/past kontekst g‘oyasiga tayanadi.",
+   plus:"Ko‘p yillik so‘rovnomalar va amaliy misollarga asoslangan, tushunarli model.",
+   minus:"O‘zbekiston va Markaziy Osiyo xaritada alohida yo‘q; mamlakat ichidagi farqlarni umumlashtiradi.",
+   v:"Xorijliklar bilan ishlaydiganlar uchun majburiy."},
+  {t:"Crucial Conversations",a:"Patterson, Grenny, McMillan, Switzler · 2002",tags:["prac"],
+   who:"VitalSmarts (hozirgi Crucial Learning) asoschilari, tashkiliy xulq-atvor mutaxassislari.",
+   idea:"Yuqori xavfli, hissiyotli suhbatlarda asosiy narsa — “xavfsizlik” hissini saqlash. Odam o‘zini xavfsiz sezmasa, jim qoladi yoki hujumga o‘tadi.",
+   plus:"Oilaviy va ishdagi nizolar uchun aniq qadamlar beradi.",
+   minus:"Amerika korporativ muhitiga yo‘naltirilgan; bizning ierarxik muhitga moslashtirish kerak.",
+   v:"Nizolarni yumshatish uchun yaxshi qo‘llanma."},
+  {t:"Getting to Yes",a:"Roger Fisher, William Ury · 1981",tags:["sci","prac"],
+   who:"Garvard muzokaralar loyihasi asoschilari.",
+   idea:"Pozitsiya emas, manfaat ustida kelishish; odamni muammodan ajratish; ikki tomonga foydali variantlar izlash.",
+   plus:"Muzokara nazariyasining klassikasi, ko‘plab universitetlarda o‘qitiladi.",
+   minus:"Ba’zan haddan tashqari mantiqiy; his-tuyg‘u va tana tiliga kam to‘xtaladi.",
+   v:"Muzokara asoslari uchun."}
+);
 const TAGN={sci:["t-sci","Ilmiy"],prac:["t-prac","Amaliy"],pop:["t-pop","Ommabop"]};
 document.getElementById("books").innerHTML=BOOKS.map(b=>`
   <article class="book">
@@ -1078,6 +1304,7 @@ const MYTHS=[
   ["Tajribali mutaxassislar (politsiya, tergovchilar) yolg‘onni oson aniqlaydi.","206 ta tadqiqot tahlili: o‘rtacha aniqlik 54%, va tajribali mutaxassislar oddiy odamlardan sezilarli farq qilmagan."],
   ["2 daqiqalik “kuch pozasi” gormonlarni o‘zgartirib, sizni jasurroq qiladi.","200 kishilik takroriy tadqiqot (Ranehill, 2015) gormonlar va xatti-harakatga ta’sir topmadi. Faqat o‘zini kuchliroq his qilish natijasi saqlanib qoldi."],
   ["Yuz ifodasi his-tuyg‘uni aniq ko‘rsatadi (g‘azab = qovoq solish).","Barrett va hamkasblari (2019) 1000 dan ortiq tadqiqotni ko‘rib chiqdi: odamlar g‘azabda o‘rtacha 25% holatda qovoq soladi. Yuz ifodasi kontekstsiz ishonchli “diagnoz” emas."],
+  ["Tez gapirsa yoki “Xudo haqqi” desa — yolg‘on gapiryapti.","Meta-tahlillarda nutq tezligi yolg‘on bilan bog‘lanmagan. Qasam ichish esa bizda oddiy nutq odati. Ishonchliroq belgi — gapning mazmuni: rost hikoyada odatda aniq tafsilot, kutilmagan qiyinchiliklar va tekshirsa bo‘ladigan dalillar ko‘proq bo‘ladi."],
   ["Mikroifodalarni o‘qishni o‘rgansangiz, har qanday yolg‘onni ko‘rasiz.","Mikroifodalar haqiqatan uchraydi, lekin kam va yolg‘on bo‘lmagan holatlarda ham paydo bo‘ladi. Ular orqali yolg‘onni aniqlash amalda ishonchli tasdiqlanmagan."]
 ];
 document.getElementById("myths").innerHTML=MYTHS.map(m=>`

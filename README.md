@@ -22,4 +22,4 @@ git push -u origin main
 Yoki terminaldan: `npx vercel` (papka ichida).
 
 ## Tahrirlash
-Matnlar `index.html` ichidagi `<script>` qismida: `ZONES` (tana qismlari), `STATES` va `PRESETS` (kombinatsiya tahlilchisi holatlari va tayyor vaziyatlar), `BOOKS` (kitoblar), `MYTHS` (afsonalar), `QUIZ` (test).
+Matnlar `index.html` ichidagi `<script>` qismida: `ZONES` (tana qismlari), `STATES` va `PRESETS` (kombinatsiya tahlilchisi, jumladan ovoz va nutq), `LOCAL` va `SITS` (vaziyatlar bo‘limi), `BOOKS` (kitoblar), `MYTHS` (afsonalar), `QUIZ` (test).
